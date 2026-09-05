@@ -20,8 +20,9 @@ function startMedication(event) {
     event.preventDefault();
   }
 
-  // Reset flag back-press dan trigger agar layar ini selalu bersih
-  state.backPressedDuringRecording = false;
+  // Reset flag trigger agar layar ini selalu bersih
+  // (backPressedDuringRecording TIDAK direset di sini karena handleVideoReady
+  //  mungkin belum selesai; flag direset di dalam handleVideoReady sendiri)
   _isTriggeringMed = false;
 
   // Pre-warm background saat menu dibuka
