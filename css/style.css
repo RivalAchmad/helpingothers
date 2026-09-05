@@ -616,6 +616,124 @@ body {
 }
 
 /* ============================================================
+   SCREEN GPS OFF: Panduan Aktifkan GPS
+   ============================================================ */
+#screen-gps-off {
+  background: linear-gradient(165deg, #0d1b2a 0%, #0b1120 60%, #0e122b 100%);
+  position: fixed; inset: 0; z-index: 110;
+}
+
+.gps-off-wrap {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  width: 100%; min-height: 100svh;
+  padding: 32px 20px 36px;
+  gap: 18px; text-align: center;
+}
+
+.gps-off-icon {
+  font-size: 4.5rem;
+  animation: gpsRadar 1.6s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(249,115,22,0.6));
+}
+
+@keyframes gpsRadar {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.12); opacity: 0.75; }
+}
+
+.gps-off-title {
+  font-size: 1.85rem; font-weight: 900; color: #fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+  line-height: 1.2;
+}
+
+.gps-off-subtitle {
+  font-size: 1rem; font-weight: 600;
+  color: rgba(255,255,255,0.72); line-height: 1.55;
+}
+
+/* Tombol Buka Pengaturan Lokasi */
+.gps-settings-btn {
+  width: 100%; max-width: 390px;
+  min-height: 110px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 5px;
+  padding: 16px 18px;
+  background: linear-gradient(135deg, #c2410c 0%, #ea580c 50%, #f97316 100%);
+  box-shadow: 0 8px 32px rgba(249,115,22,0.5), 0 2px 8px rgba(0,0,0,0.5),
+              inset 0 1px 0 rgba(255,255,255,0.3);
+  border: none; border-radius: var(--radius-xl);
+  font-family: var(--font); color: #fff; cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 0.08s ease, box-shadow 0.15s ease;
+  animation: gpsSettingsPulse 2s ease-in-out infinite;
+}
+
+@keyframes gpsSettingsPulse {
+  0%, 100% { box-shadow: 0 8px 32px rgba(249,115,22,0.5), 0 2px 8px rgba(0,0,0,0.5); }
+  50%       { box-shadow: 0 8px 48px rgba(249,115,22,0.8), 0 2px 8px rgba(0,0,0,0.5); }
+}
+
+.gps-settings-btn:active { transform: scale(0.96); }
+
+.gps-btn-icon { font-size: 2rem; }
+
+.gps-btn-text {
+  font-size: 1.3rem; font-weight: 900;
+  letter-spacing: 0.4px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+.gps-btn-sub {
+  font-size: 0.82rem; font-weight: 700; opacity: 0.9;
+}
+
+/* Panduan manual */
+.gps-manual-hint {
+  width: 100%; max-width: 390px;
+  background: rgba(249,115,22,0.12);
+  border: 1px solid rgba(249,115,22,0.3);
+  border-radius: var(--radius-lg);
+  padding: 16px 18px;
+  text-align: left;
+  animation: fadeInUp 0.35s ease both;
+}
+
+.gps-hint-title {
+  font-size: 0.95rem; font-weight: 800;
+  color: #fdba74; margin-bottom: 10px;
+}
+
+.gps-hint-steps {
+  padding-left: 18px; margin: 0;
+  display: flex; flex-direction: column; gap: 8px;
+}
+
+.gps-hint-steps li {
+  font-size: 0.92rem; font-weight: 600;
+  color: rgba(255,255,255,0.82); line-height: 1.4;
+}
+
+.gps-hint-steps strong { color: #fde047; }
+
+/* Tombol Coba Lagi */
+.gps-retry-btn {
+  width: 100%; max-width: 390px;
+  padding: 14px 24px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 50px;
+  color: #fff; font-family: var(--font);
+  font-size: 1rem; font-weight: 800;
+  cursor: pointer; touch-action: manipulation;
+  transition: background 0.2s;
+}
+
+.gps-retry-btn:hover { background: rgba(255,255,255,0.2); }
+.gps-retry-btn:active { transform: scale(0.97); }
+
+/* ============================================================
    SCREEN 4: HASIL (Sukses / Error)
    ============================================================ */
 #screen-result {

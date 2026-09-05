@@ -128,15 +128,17 @@ function triggerLocationGPS(event) {
           msg = 'Izin lokasi ditolak. Silakan ketuk tombol 2 kali cepat lagi, lalu pilih "Izinkan".';
           break;
         case err.POSITION_UNAVAILABLE:
-          msg = 'Sinyal GPS lemah. Coba pindah ke tempat terbuka atau dekat jendela, lalu tekan tombol lagi.';
-          break;
+          // GPS mati → tampilkan layar panduan khusus, bukan pesan error biasa
+          showGpsOffScreen();
+          return;
         case err.TIMEOUT:
-          msg = 'Waktu habis saat mencari lokasi. Pastikan GPS diaktifkan dan coba lagi.';
-          break;
+          // GPS tidak berhasil dalam 30 detik (kemungkinan sinyal lemah/mati)
+          showGpsOffScreen();
+          return;
       }
       showResult({ success: false, icon: '📡', title: 'Lokasi Tidak Ditemukan', message: msg });
     },
-    { enableHighAccuracy: true, maximumAge: 30000 }
+    { enableHighAccuracy: true, timeout: 30000, maximumAge: 30000 }
   );
 
   // ⚡ LANGKAH 2: Haptic feedback instan
@@ -182,4 +184,35 @@ function triggerLocationGPS(event) {
       locVideo.play().catch(() => {});
     }
   });
+}
+
+/**
+ * Tampilkan layar panduan khusus saat GPS HP mati (POSITION_UNAVAILABLE).
+ * Memberikan tombol pintasan buka Pengaturan Lokasi sistem Android.
+ */
+function showGpsOffScreen() {
+  stopAllMedia();
+  showScreen('screen-gps-off');
+}
+
+/**
+ * Coba buka halaman Pengaturan Lokasi Android dari browser.
+ * Bekerja di Chrome for Android via Intent URL.
+ * Di browser lain, fallback dengan petunjuk manual.
+ */
+function openLocationSettings() {
+  // Intent URL: hanya berfungsi di Chrome for Android
+  const intentUrl = 'intent://settings/location#Intent;scheme=android-settings;' +
+                    'package=com.android.settings;end';
+  try {
+    window.location.href = intentUrl;
+  } catch (_) {
+    // Fallback: tunjukkan pesan
+  }
+
+  // Setelah beberapa detik (jika tab tidak berpindah), tampilkan petunjuk manual
+  setTimeout(() => {
+    const hint = document.getElementById('gps-manual-hint');
+    if (hint) hint.style.display = 'block';
+  }, 1200);
 }

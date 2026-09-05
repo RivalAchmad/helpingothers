@@ -202,6 +202,55 @@
     </section>
 
     <!-- ============================================================
+         SCREEN GPS OFF: Panduan Aktifkan GPS
+         Muncul saat POSITION_UNAVAILABLE (GPS sistem mati)
+         ============================================================ -->
+    <section id="screen-gps-off" class="screen" role="dialog" aria-modal="true" aria-label="Aktifkan GPS">
+      <div class="gps-off-wrap">
+
+        <div class="gps-off-icon" aria-hidden="true">📡</div>
+        <h2 class="gps-off-title">GPS Belum Aktif</h2>
+        <p class="gps-off-subtitle">
+          Lokasi HP belum bisa ditemukan.<br>
+          Aktifkan GPS/Lokasi terlebih dahulu,<br>
+          lalu kembali ke sini.
+        </p>
+
+        <!-- Tombol buka pengaturan lokasi Android -->
+        <button id="btn-open-gps-settings" class="gps-settings-btn"
+          onclick="openLocationSettings()"
+          aria-label="Buka pengaturan lokasi untuk mengaktifkan GPS">
+          <span class="gps-btn-icon">⚙️</span>
+          <span class="gps-btn-text">BUKA PENGATURAN LOKASI</span>
+          <span class="gps-btn-sub">Ketuk untuk mengaktifkan GPS</span>
+        </button>
+
+        <!-- Panduan manual (muncul jika Intent URL tidak berfungsi) -->
+        <div id="gps-manual-hint" class="gps-manual-hint" style="display:none;">
+          <p class="gps-hint-title">Cara mengaktifkan GPS secara manual:</p>
+          <ol class="gps-hint-steps">
+            <li>Tarik panel notifikasi dari atas layar</li>
+            <li>Ketuk ikon <strong>Lokasi</strong> atau <strong>GPS</strong></li>
+            <li>Pastikan berubah menjadi aktif (berwarna)</li>
+            <li>Kembali ke aplikasi ini</li>
+          </ol>
+        </div>
+
+        <!-- Tombol coba lagi setelah GPS dinyalakan -->
+        <button class="gps-retry-btn" onclick="startLocation(null)"
+          aria-label="Coba kirim lokasi lagi setelah GPS aktif">
+          🔄&nbsp; Coba Lagi Setelah GPS Aktif
+        </button>
+
+        <button class="flow-cancel-btn" onclick="goHome()"
+          aria-label="Kembali ke menu utama">
+          ← KEMBALI KE MENU
+        </button>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
          SCREEN 4: HASIL (Sukses / Error)
          ============================================================ -->
     <section id="screen-result" class="screen" role="dialog" aria-modal="true" aria-label="Hasil pengiriman data">
