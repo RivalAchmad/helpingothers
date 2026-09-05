@@ -616,6 +616,74 @@ body {
 }
 
 /* ============================================================
+   PENYESUAIAN KHUSUS MENU LOKASI (#screen-prep-lokasi):
+   - Animasi ketuk dipindah ke atas tombol
+   - Posisi tombol ketuk 2 kali diposisikan ke bawah agar
+     sejajar dengan pilihan perizinan lokasi Android:
+     "Allow while visiting the site" & "Allow this time"
+   ============================================================ */
+#screen-prep-lokasi .unified-flow-screen {
+  justify-content: flex-start;
+  padding: clamp(14px, 2.5svh, 24px) 16px clamp(16px, 3svh, 28px);
+  gap: 0;
+}
+
+#screen-prep-lokasi .rec-status-wrap {
+  flex-shrink: 0;
+  text-align: center;
+  margin: 0 0 clamp(4px, 1svh, 10px);
+}
+
+#screen-prep-lokasi #loc-bottom-trigger {
+  width: 100%;
+  max-width: 390px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+  margin: 0 auto;
+}
+
+#screen-prep-lokasi #loc-bottom-trigger .tap-anim-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100px;
+  max-height: 220px;
+  margin: 0 0 clamp(8px, 1.8svh, 16px) 0;
+  padding: 0;
+  pointer-events: none;
+}
+
+#screen-prep-lokasi #loc-bottom-trigger .tap-anim-svg {
+  width: clamp(130px, 20svh, 175px);
+  height: clamp(130px, 20svh, 175px);
+  opacity: 0.92;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.45));
+}
+
+#screen-prep-lokasi #btn-trigger-lokasi {
+  width: 100%;
+  min-height: clamp(112px, 15svh, 126px);
+  flex-shrink: 0;
+  margin-bottom: clamp(6px, 1.2svh, 10px);
+}
+
+#screen-prep-lokasi #loc-bottom-trigger .flow-cancel-btn {
+  flex-shrink: 0;
+  margin-top: 2px;
+  margin-bottom: clamp(14px, 3svh, 28px);
+}
+
+/* Saat fase 2 (kirim GPS & video) aktif, posisikan video di tengah */
+#screen-prep-lokasi #loc-gps-phase {
+  margin: auto 0;
+}
+
+/* ============================================================
    SCREEN GPS OFF: Panduan Aktifkan GPS
    ============================================================ */
 #screen-gps-off {
