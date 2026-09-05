@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#0f172a" />
   <meta name="description"
     content="Aplikasi pemantau kesehatan dan keselamatan lansia - konfirmasi obat dan berbagi lokasi" />
-  <title>Lansia Care - Yayasan Peduli</title>
+  <title>myFitPlate - Penghitung Nutrisi Makanan</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,9 +33,9 @@
     <section id="screen-main" class="screen active" role="main" aria-label="Menu Utama">
 
       <div class="app-header">
-        <div class="app-logo" role="img" aria-label="Ikon Rumah Sakit">&#127973;</div>
-        <h1 class="app-title">Lansia Care</h1>
-        <p class="app-subtitle">Yayasan Peduli Lansia</p>
+        <div class="app-logo" role="img" aria-label="Ikon Piring">&#127869;</div>
+        <h1 class="app-title">myFitPlate</h1>
+        <p class="app-subtitle">Penghitung Nutrisi Makanan</p>
       </div>
 
       <div id="current-time" class="time-display" aria-live="polite"></div>
@@ -45,23 +45,22 @@
         <!-- Menu 1: Konfirmasi Minum Obat -->
         <button id="btn-obat" class="main-btn btn-obat"
           aria-label="Saya sudah minum obat, tekan untuk mulai konfirmasi">
-          <span class="btn-icon" aria-hidden="true">&#128138;</span>
-          <span class="btn-label">SAYA SUDAH<br>MINUM OBAT</span>
-          <span class="btn-sublabel">Tekan untuk mulai konfirmasi</span>
+          <span class="btn-icon" aria-hidden="true">&#129367;</span>
+          <span class="btn-label">PERIKSA KANDUNGAN<br>NUTRISI MAKANAN</span>
+          <span class="btn-sublabel">Tekan untuk mulai memeriksa</span>
         </button>
 
         <!-- Menu 2: Kabarkan Lokasi -->
-        <button id="btn-lokasi" class="main-btn btn-lokasi"
-          aria-label="Kabarkan lokasi saya sekarang ke tim perawat">
-          <span class="btn-icon" aria-hidden="true">&#128205;</span>
-          <span class="btn-label">KABARKAN<br>LOKASI SAYA</span>
-          <span class="btn-sublabel">Tekan untuk berbagi posisi GPS</span>
+        <button id="btn-lokasi" class="main-btn btn-lokasi" aria-label="Kabarkan lokasi saya sekarang ke tim perawat">
+          <span class="btn-icon" aria-hidden="true">&#127859;</span>
+          <span class="btn-label">RESTORAN SEHAT<br>TERDEKAT</span>
+          <span class="btn-sublabel">Tekan untuk mencari restoran</span>
         </button>
 
       </div>
 
       <div class="safety-note" aria-label="Informasi privasi">
-        &#128274; Semua data hanya dikirim ke tim perawat yayasan Anda
+        🤖 Didukung oleh AI. ⚠️ Informasi yang dihasilkan tidak selalu 100% akurat.
       </div>
 
       <div class="status-bar" role="status" aria-label="Status aplikasi">
@@ -89,11 +88,12 @@
         <div class="rec-status-wrap">
           <div class="rec-badge" id="med-badge">
             <div class="rec-dot" aria-hidden="true"></div>
-            <span id="med-badge-text">SIAPKAN OBAT</span>
+            <span id="med-badge-text">SIAPKAN MAKANAN</span>
           </div>
-          <h2 class="rec-title" id="med-title">Konfirmasi Minum Obat</h2>
+          <h2 class="rec-title" id="med-title">Periksa Kandungan Nutrisi</h2>
           <p class="rec-subtitle" id="med-subtitle">
-            Posisikan HP di depan wajah Anda,<br>lalu ketuk tombol di bawah <strong>2 kali cepat</strong> untuk mulai.
+            Posisikan makanan di depan kamera HP anda,<br>lalu ketuk tombol di bawah <strong>2 kali</strong> untuk
+            mulai.
           </p>
         </div>
 
@@ -102,8 +102,8 @@
           <button id="btn-trigger-obat" class="btn-bottom-trigger btn-trigger-green"
             onpointerdown="triggerMedicationCamera(event)" onclick="triggerMedicationCamera(event)"
             aria-label="Ketuk dua kali cepat untuk membuka kamera dan mulai merekam">
-            <span class="trigger-main-text" id="btn-trigger-obat-text">&#9889; KETUK 2 KALI CEPAT</span>
-            <span class="trigger-sub-text" id="btn-trigger-obat-sub">UNTUK MEMBUKA KAMERA &amp; MULAI</span>
+            <span class="trigger-main-text" id="btn-trigger-obat-text">&#9889; KETUK 2 KALI</span>
+            <span class="trigger-sub-text" id="btn-trigger-obat-sub">UNTUK MULAI MEMERIKSA NUTRISI</span>
           </button>
           <!-- Animasi tap di bawah tombol agar tidak hampa -->
           <div class="tap-anim-wrap" aria-hidden="true">
@@ -151,11 +151,12 @@
         <div class="rec-status-wrap">
           <div class="rec-badge loc-badge-idle" id="loc-badge">
             <div class="rec-dot" aria-hidden="true"></div>
-            <span id="loc-badge-text">BAGIKAN LOKASI</span>
+            <span id="loc-badge-text">CARI RESTORAN</span>
           </div>
-          <h2 class="rec-title" id="loc-title">Kabarkan Lokasi Saya</h2>
+          <h2 class="rec-title" id="loc-title">Restoran Sehat Terdekat</h2>
           <p class="rec-subtitle" id="loc-subtitle">
-            Titik lokasi GPS Anda akan dikirim ke tim perawat.<br>Ketuk tombol di bawah <strong>2 kali cepat</strong>.
+            Aplikasi akan mencari restoran sehat terdekat dari lokasi anda.<br>Ketuk tombol di bawah <strong>2
+              kali</strong>.
           </p>
         </div>
 
@@ -164,8 +165,8 @@
           <button id="btn-trigger-lokasi" class="btn-bottom-trigger btn-trigger-orange"
             onpointerdown="triggerLocationGPS(event)" onclick="triggerLocationGPS(event)"
             aria-label="Ketuk dua kali cepat untuk membagikan koordinat lokasi">
-            <span class="trigger-main-text" id="btn-trigger-lokasi-text">&#9889; KETUK 2 KALI CEPAT</span>
-            <span class="trigger-sub-text" id="btn-trigger-lokasi-sub">UNTUK MENGIRIM POSISI LOKASI</span>
+            <span class="trigger-main-text" id="btn-trigger-lokasi-text">&#9889; KETUK 2 KALI</span>
+            <span class="trigger-sub-text" id="btn-trigger-lokasi-sub">UNTUK MULAI MENCARI</span>
           </button>
           <!-- Animasi tap di bawah tombol agar tidak hampa -->
           <div class="tap-anim-wrap" aria-hidden="true">
@@ -211,7 +212,7 @@
         <div class="gps-off-icon" aria-hidden="true">📡</div>
         <h2 class="gps-off-title">GPS Belum Aktif</h2>
         <p class="gps-off-subtitle">
-          Lokasi HP belum bisa ditemukan.<br>
+          Lokasi Anda belum bisa ditemukan.<br>
           Ikuti 3 langkah mudah di bawah ini:
         </p>
 
@@ -251,8 +252,7 @@
           🔄&nbsp; GPS Sudah Aktif — Coba Lagi
         </button>
 
-        <button class="flow-cancel-btn" onclick="goHome()"
-          aria-label="Kembali ke menu utama">
+        <button class="flow-cancel-btn" onclick="goHome()" aria-label="Kembali ke menu utama">
           ← KEMBALI KE MENU
         </button>
 
@@ -286,19 +286,20 @@
           <div class="rec-dot" aria-hidden="true"></div>
           <span>MENGANALISIS</span>
         </div>
-        <h2 class="analysis-title">Menganalisis Obat Anda&hellip;</h2>
-        <p class="analysis-subtitle">Mohon tunggu sebentar,<br>sistem sedang memverifikasi konsumsi obat Anda.</p>
+        <h2 class="analysis-title">Menganalisis Makanan Anda&hellip;</h2>
+        <p class="analysis-subtitle">Mohon tunggu sebentar,<br>sistem sedang menganalisis kandungan nutrisi makanan
+          Anda.</p>
 
         <!-- Circular Progress Bar (SVG) -->
         <div class="analysis-circle-wrap" aria-hidden="true">
           <svg class="analysis-svg" viewBox="0 0 120 120">
-            <circle class="analysis-bg-circle" cx="60" cy="60" r="50"/>
-            <circle class="analysis-progress-circle" id="analysis-circle" cx="60" cy="60" r="50"/>
+            <circle class="analysis-bg-circle" cx="60" cy="60" r="50" />
+            <circle class="analysis-progress-circle" id="analysis-circle" cx="60" cy="60" r="50" />
           </svg>
-          <div class="analysis-icon-center">&#128138;</div>
+          <div class="analysis-icon-center">&#129368;</div>
         </div>
 
-        <p class="analysis-hint">Data Anda aman &amp; terenkripsi 🔒</p>
+        <p class="analysis-hint">Analisis didukung oleh AI 🤖</p>
       </div>
     </section>
 
@@ -313,7 +314,7 @@
           <span class="medicine-success-icon">✅</span>
           <div>
             <div class="medicine-success-title">Analisis Berhasil!</div>
-            <div class="medicine-success-sub">Konsumsi obat hari ini telah terverifikasi</div>
+            <div class="medicine-success-sub">Kandungan nutrisi makanan anda telah teridentifikasi</div>
           </div>
         </div>
 
@@ -321,46 +322,46 @@
         <div class="medicine-card">
           <div class="medicine-card-header">
             <span class="medicine-card-header-icon">&#128138;</span>
-            <span>Daftar Obat Hari Ini</span>
+            <span>Daftar Kandungan Nutrisi</span>
           </div>
           <ul class="medicine-items" aria-label="Daftar obat yang dikonsumsi">
             <li class="medicine-item">
-              <span class="med-emoji">💊</span>
+              <span class="med-emoji">🍞</span>
               <div class="med-info">
-                <span class="med-name">Amlodipin</span>
-                <span class="med-dose">5 mg &bull; 1 tablet</span>
+                <span class="med-name">Karbohidrat</span>
+                <span class="med-dose">45 g</span>
               </div>
               <span class="med-check">&#10003;</span>
             </li>
             <li class="medicine-item">
-              <span class="med-emoji">🩺</span>
+              <span class="med-emoji">🥩</span>
               <div class="med-info">
-                <span class="med-name">Metformin</span>
-                <span class="med-dose">500 mg &bull; 1 tablet</span>
+                <span class="med-name">Protein</span>
+                <span class="med-dose">25 g</span>
               </div>
               <span class="med-check">&#10003;</span>
             </li>
             <li class="medicine-item">
-              <span class="med-emoji">🌿</span>
+              <span class="med-emoji">🥑</span>
               <div class="med-info">
-                <span class="med-name">Simvastatin</span>
-                <span class="med-dose">20 mg &bull; 1 tablet</span>
+                <span class="med-name">Lemak</span>
+                <span class="med-dose">12 g</span>
               </div>
               <span class="med-check">&#10003;</span>
             </li>
             <li class="medicine-item">
-              <span class="med-emoji">🔵</span>
+              <span class="med-emoji">🥬</span>
               <div class="med-info">
-                <span class="med-name">Captopril</span>
-                <span class="med-dose">12.5 mg &bull; 1 tablet</span>
+                <span class="med-name">Serat</span>
+                <span class="med-dose">5 g</span>
               </div>
               <span class="med-check">&#10003;</span>
             </li>
             <li class="medicine-item">
-              <span class="med-emoji">🌼</span>
+              <span class="med-emoji">🍬</span>
               <div class="med-info">
-                <span class="med-name">Vitamin B Complex</span>
-                <span class="med-dose">100 mg &bull; 1 tablet</span>
+                <span class="med-name">Gula</span>
+                <span class="med-dose">8 g</span>
               </div>
               <span class="med-check">&#10003;</span>
             </li>
@@ -378,26 +379,28 @@
          Menampilkan 5 yayasan terdekat dengan foto, alamat & link Google Maps.
          Tanpa auto-exit agar lansia leluasa membaca informasi.
          ============================================================ -->
-    <section id="screen-foundation-list" class="screen" role="dialog" aria-label="Daftar 5 Yayasan Lansia Terdekat" aria-modal="true">
+    <section id="screen-foundation-list" class="screen" role="dialog" aria-label="Daftar 5 Yayasan Lansia Terdekat"
+      aria-modal="true">
       <div class="foundation-list-wrap">
 
         <!-- Banner Sukses Pengiriman Lokasi -->
         <div class="foundation-success-banner">
           <span class="foundation-success-icon">&#128205;</span>
           <div class="foundation-success-info">
-            <div class="foundation-success-title">Lokasi Berhasil Terkirim!</div>
+            <div class="foundation-success-title">Restoran Berhasil Ditemukan!</div>
             <div class="foundation-success-sub" id="foundation-banner-sub">
-              Posisi GPS Anda telah diterima oleh tim perawat yayasan.
+              Restoran sehat terdekat dari lokasi Anda telah ditemukan.
             </div>
           </div>
         </div>
 
         <!-- Judul & Instruksi Rekomendasi -->
         <div class="foundation-header-box">
-          <div class="foundation-badge">&#127970; REKOMENDASI TERDEKAT</div>
-          <h2 class="foundation-main-title">5 Yayasan Lansia Terdekat</h2>
+          <div class="foundation-badge">👨🏻‍🍳 REKOMENDASI TERDEKAT</div>
+          <h2 class="foundation-main-title">5 Restoran Sehat Terdekat</h2>
           <p class="foundation-main-desc">
-            Berikut panti dan yayasan lansia rujukan di sekitar titik Anda. Ketuk tombol untuk membuka alamat di Google Maps.
+            Berikut restoran sehat terdekat dari lokasi Anda. Ketuk tombol untuk membuka alamat di Google
+            Maps.
           </p>
         </div>
 
@@ -408,24 +411,26 @@
           <!-- CATATAN: Ganti 'assets/foundations/yayasan-1.jpg' dengan foto yayasan Anda -->
           <article class="foundation-card">
             <div class="foundation-img-box">
-              <img src="assets/foundations/yayasan-1.jpg" 
-                onerror="this.onerror=null; this.src='assets/foundations/yayasan-1.svg';" 
+              <img src="assets/foundations/resto-1.jpg"
+                onerror="this.onerror=null; this.src='assets/foundations/yayasan-1.svg';"
                 alt="Foto Panti Sosial Tresna Werdha Budi Mulia 1" class="foundation-img">
               <span class="foundation-distance-tag">&#128205; ~1.2 km &bull; Terdekat</span>
-              <span class="foundation-status-tag">&#11088; Rujukan Utama</span>
+              <span class="foundation-status-tag">&#11088; Rekomendasi Utama</span>
             </div>
             <div class="foundation-body">
-              <div class="foundation-category">Panti Sosial &bull; Perawatan Terpadu 24 Jam</div>
-              <h3 class="foundation-name">Panti Sosial Tresna Werdha Budi Mulia 1</h3>
+              <div class="foundation-category">Restoran Keluarga &bull; Pelayanan Kuliner Nusantara Premium</div>
+              <h3 class="foundation-name">Plataran Dharmawangsa</h3>
               <p class="foundation-desc">
-                Layanan perawatan lansia terlengkap dengan dokter siaga, asuhan keperawatan 24 jam, fisioterapi, dan pemantauan nutrisi harian.
+                Restoran premium bergaya rumah adat Jawa klasik yang menyajikan hidangan autentik Nusantara di tengah
+                suasana taman yang rindang.
               </p>
               <div class="foundation-address">
                 <span class="addr-icon">&#128204;</span>
-                <span class="addr-text">Jl. Bina Marga No. 54, Ceger, Kec. Cipayung, Kota Jakarta Timur</span>
+                <span class="addr-text">Jl. Dharmawangsa Raya No. 6, RT 4/RW 2, Pulo, Kec. Kebayoran Baru, Kota Jakarta
+                  Selatan</span>
               </div>
-              <a href="https://www.google.com/maps/search/?api=1&query=Panti+Sosial+Tresna+Werdha+Budi+Mulia+1+Cipayung" 
-                target="_blank" rel="noopener noreferrer" class="foundation-maps-btn"
+              <a href="https://maps.app.goo.gl/sLyrfJgTmQnwNucX8" target="_blank" rel="noopener noreferrer"
+                class="foundation-maps-btn"
                 aria-label="Buka rute Panti Sosial Tresna Werdha Budi Mulia 1 di Google Maps">
                 <span class="maps-btn-icon">&#128506;&#65039;</span>
                 <span class="maps-btn-text">Buka Rute di Google Maps</span>
@@ -438,25 +443,26 @@
           <!-- CATATAN: Ganti 'assets/foundations/yayasan-2.jpg' dengan foto yayasan Anda -->
           <article class="foundation-card">
             <div class="foundation-img-box">
-              <img src="assets/foundations/yayasan-2.jpg" 
-                onerror="this.onerror=null; this.src='assets/foundations/yayasan-2.svg';" 
+              <img src="assets/foundations/resto-2.jpg"
+                onerror="this.onerror=null; this.src='assets/foundations/yayasan-2.svg';"
                 alt="Foto Sasana Tresna Werdha Karya Bhakti" class="foundation-img">
               <span class="foundation-distance-tag">&#128205; ~2.6 km</span>
-              <span class="foundation-status-tag">&#127973; Fisioterapi &amp; Medis</span>
+              <span class="foundation-status-tag">⏱️ Cepat &amp; Responsif</span>
             </div>
             <div class="foundation-body">
-              <div class="foundation-category">Sasana Lansia &bull; Fisioterapi Geriatri</div>
-              <h3 class="foundation-name">Sasana Tresna Werdha Karya Bhakti RIA</h3>
+              <div class="foundation-category">Restoran Kasual &bull; Konsep Halaman Hijau Keluarga</div>
+              <h3 class="foundation-name">Twin House Cipete</h3>
               <p class="foundation-desc">
-                Pusat pendampingan lansia mandiri dan rawat inap dengan program terapi fisik, rekreasi sosial, dan bimbingan rohani.
+                Restoran dengan konsep garden cafe yang sangat ramah keluarga, terkenal dengan area luar ruangan hijau
+                yang luas serta perpaduan menu Barat dan lokal.
               </p>
               <div class="foundation-address">
                 <span class="addr-icon">&#128204;</span>
-                <span class="addr-text">Jl. Karya Bhakti No. 1, Cibubur, Kec. Ciracas, Kota Jakarta Timur</span>
+                <span class="addr-text">Jl. Cipete Raya No. 4B, RT 8/RW 4, Cipete Selatan, Kec. Cilandak, Kota Jakarta
+                  Selatan</span>
               </div>
-              <a href="https://www.google.com/maps/search/?api=1&query=Sasana+Tresna+Werdha+Karya+Bhakti+Cibubur" 
-                target="_blank" rel="noopener noreferrer" class="foundation-maps-btn"
-                aria-label="Buka rute Sasana Tresna Werdha Karya Bhakti di Google Maps">
+              <a href="https://maps.app.goo.gl/fAYExPLDErWSme7T6" target="_blank" rel="noopener noreferrer"
+                class="foundation-maps-btn" aria-label="Buka rute Sasana Tresna Werdha Karya Bhakti di Google Maps">
                 <span class="maps-btn-icon">&#128506;&#65039;</span>
                 <span class="maps-btn-text">Buka Rute di Google Maps</span>
                 <span class="maps-btn-arrow">&#8599;</span>
@@ -468,25 +474,26 @@
           <!-- CATATAN: Ganti 'assets/foundations/yayasan-3.jpg' dengan foto yayasan Anda -->
           <article class="foundation-card">
             <div class="foundation-img-box">
-              <img src="assets/foundations/yayasan-3.jpg" 
-                onerror="this.onerror=null; this.src='assets/foundations/yayasan-3.svg';" 
+              <img src="assets/foundations/resto-3.jpg"
+                onerror="this.onerror=null; this.src='assets/foundations/yayasan-3.svg';"
                 alt="Foto Panti Werdha Wisma Mulia" class="foundation-img">
               <span class="foundation-distance-tag">&#128205; ~3.8 km</span>
               <span class="foundation-status-tag">&#127807; Asri &amp; Nyaman</span>
             </div>
             <div class="foundation-body">
-              <div class="foundation-category">Panti Werdha &bull; Hunian Lansia Asri</div>
-              <h3 class="foundation-name">Panti Werdha Wisma Mulia</h3>
+              <div class="foundation-category">Fine Dining &bull; Kuliner Autentik Eropa</div>
+              <h3 class="foundation-name">Le Quartier</h3>
               <p class="foundation-desc">
-                Lingkungan asri, tenang dan kekeluargaan dengan perawat bersertifikasi, jadwal senam teratur, dan makanan sehat bergizi seimbang.
+                Bistro bergaya Prancis romantis nan ikonis di kawasan Senopati yang menyajikan steak premium, escargot,
+                hingga hidangan autentik Eropa.
               </p>
               <div class="foundation-address">
                 <span class="addr-icon">&#128204;</span>
-                <span class="addr-text">Jl. Hadiah No. 14-16, RT.5/RW.3, Jelambar, Kec. Grogol Petamburan, Jakarta Barat</span>
+                <span class="addr-text">Jl. Gunawarman No. 34, RT 5/RW 2, Selong, Kec. Kebayoran Baru, Kota Jakarta
+                  Selatan</span>
               </div>
-              <a href="https://www.google.com/maps/search/?api=1&query=Panti+Werdha+Wisma+Mulia+Jelambar" 
-                target="_blank" rel="noopener noreferrer" class="foundation-maps-btn"
-                aria-label="Buka rute Panti Werdha Wisma Mulia di Google Maps">
+              <a href="https://maps.app.goo.gl/G3gaJH8barJsZHEs9" target="_blank" rel="noopener noreferrer"
+                class="foundation-maps-btn" aria-label="Buka rute Panti Werdha Wisma Mulia di Google Maps">
                 <span class="maps-btn-icon">&#128506;&#65039;</span>
                 <span class="maps-btn-text">Buka Rute di Google Maps</span>
                 <span class="maps-btn-arrow">&#8599;</span>
@@ -498,25 +505,26 @@
           <!-- CATATAN: Ganti 'assets/foundations/yayasan-4.jpg' dengan foto yayasan Anda -->
           <article class="foundation-card">
             <div class="foundation-img-box">
-              <img src="assets/foundations/yayasan-4.jpg" 
-                onerror="this.onerror=null; this.src='assets/foundations/yayasan-4.svg';" 
+              <img src="assets/foundations/resto-4.jpg"
+                onerror="this.onerror=null; this.src='assets/foundations/yayasan-4.svg';"
                 alt="Foto Panti Jompo Yayasan Kasih Mandiri" class="foundation-img">
               <span class="foundation-distance-tag">&#128205; ~4.5 km</span>
-              <span class="foundation-status-tag">&#129309; Pendampingan Penuh</span>
+              <span class="foundation-status-tag">🏆 Pelayanan Terbaik</span>
             </div>
             <div class="foundation-body">
-              <div class="foundation-category">Yayasan Sosial &bull; Asuhan Penuh Kasih</div>
-              <h3 class="foundation-name">Panti Jompo Yayasan Kasih Mandiri</h3>
+              <div class="foundation-category">Modern &bull; Konsep Farm-to-Table</div>
+              <h3 class="foundation-name">GIOI Senopati</h3>
               <p class="foundation-desc">
-                Pelayanan penuh kasih bagi lansia yang membutuhkan perhatian khusus, pemeriksaan tanda vital harian, dan kepatuhan minum obat.
+                Restoran berkonsep farm-to-table mewah yang memadukan keunikan cita rasa kuliner tradisional Asia
+                Tenggara dan Indonesia modern.
               </p>
               <div class="foundation-address">
                 <span class="addr-icon">&#128204;</span>
-                <span class="addr-text">Jl. Tebet Barat Dalam Raya No. 42, Tebet, Kota Jakarta Selatan</span>
+                <span class="addr-text">Jl. Senopati Raya No. 88, RT 7/RW 3, Selong, Kec. Kebayoran Baru, Kota Jakarta
+                  Selatan</span>
               </div>
-              <a href="https://www.google.com/maps/search/?api=1&query=Yayasan+Kasih+Mandiri+Lansia+Jakarta" 
-                target="_blank" rel="noopener noreferrer" class="foundation-maps-btn"
-                aria-label="Buka rute Panti Jompo Yayasan Kasih Mandiri di Google Maps">
+              <a href="https://maps.app.goo.gl/2wbFfLeFv9VkKmPv7" target="_blank" rel="noopener noreferrer"
+                class="foundation-maps-btn" aria-label="Buka rute Panti Jompo Yayasan Kasih Mandiri di Google Maps">
                 <span class="maps-btn-icon">&#128506;&#65039;</span>
                 <span class="maps-btn-text">Buka Rute di Google Maps</span>
                 <span class="maps-btn-arrow">&#8599;</span>
@@ -528,25 +536,26 @@
           <!-- CATATAN: Ganti 'assets/foundations/yayasan-5.jpg' dengan foto yayasan Anda -->
           <article class="foundation-card">
             <div class="foundation-img-box">
-              <img src="assets/foundations/yayasan-5.jpg" 
-                onerror="this.onerror=null; this.src='assets/foundations/yayasan-5.svg';" 
+              <img src="assets/foundations/resto-5.jpg"
+                onerror="this.onerror=null; this.src='assets/foundations/yayasan-5.svg';"
                 alt="Foto Panti Lansia Santa Anna" class="foundation-img">
               <span class="foundation-distance-tag">&#128205; ~5.3 km</span>
-              <span class="foundation-status-tag">&#129658; Dokter Rutin</span>
+              <span class="foundation-status-tag">👌 Enak &amp; Murah</span>
             </div>
             <div class="foundation-body">
-              <div class="foundation-category">Panti Lansia &bull; Perawatan Komprehensif</div>
-              <h3 class="foundation-name">Panti Lansia Santa Anna</h3>
+              <div class="foundation-category">Autentik &bull; Spesialisasi Ramen Jepang</div>
+              <h3 class="foundation-name">Yoiko Ramen 415</h3>
               <p class="foundation-desc">
-                Fasilitas perawatan jangka panjang dengan staf sabar dan terlatih, ruang istirahat sejuk, konsultasi medis berkala, dan komunitas lansia aktif.
+                Restoran mi Jepang legendaris yang terkenal dengan cita rasa kuah kaldu Tonkotsu dan Gila Paitan kental
+                dalam atmosfer kedai yang sangat cozy.
               </p>
               <div class="foundation-address">
                 <span class="addr-icon">&#128204;</span>
-                <span class="addr-text">Jl. Bandengan Utara No. 80, Pejagalan, Kec. Penjaringan, Kota Jakarta Utara</span>
+                <span class="addr-text">Jl. Pangeran Antasari No. 2, RT 2/RW 9, Cipete Utara, Kec. Kebayoran Baru, Kota
+                  Jakarta Selatan</span>
               </div>
-              <a href="https://www.google.com/maps/search/?api=1&query=Panti+Lansia+Santa+Anna+Jakarta" 
-                target="_blank" rel="noopener noreferrer" class="foundation-maps-btn"
-                aria-label="Buka rute Panti Lansia Santa Anna di Google Maps">
+              <a href="https://maps.app.goo.gl/tnVf27u6qM9xgaaj6" target="_blank" rel="noopener noreferrer"
+                class="foundation-maps-btn" aria-label="Buka rute Panti Lansia Santa Anna di Google Maps">
                 <span class="maps-btn-icon">&#128506;&#65039;</span>
                 <span class="maps-btn-text">Buka Rute di Google Maps</span>
                 <span class="maps-btn-arrow">&#8599;</span>
@@ -559,7 +568,7 @@
         <!-- Tombol Selesai & Kembali ke Menu Utama -->
         <div class="foundation-action-wrap">
           <button class="foundation-home-btn" onclick="goHome()" aria-label="Selesai dan kembali ke menu utama">
-            &#127968; &nbsp;Selesai &amp; Kembali ke Menu
+            &#127968; &nbsp;Selesai &amp; Kembali
           </button>
         </div>
 

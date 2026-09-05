@@ -1,5 +1,5 @@
 /* ==============================================
-   LANSIA CARE — style.css
+   myFitPlate — style.css
    ============================================== */
 
 /* ── Reset & Base ── */
@@ -620,106 +620,151 @@ body {
    ============================================================ */
 #screen-gps-off {
   background: linear-gradient(165deg, #0d1b2a 0%, #0b1120 60%, #0e122b 100%);
-  position: fixed; inset: 0; z-index: 110;
+  position: fixed;
+  inset: 0;
+  z-index: 110;
 }
 
 .gps-off-wrap {
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  width: 100%; min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100svh;
   padding: 32px 20px 36px;
-  gap: 20px; text-align: center;
+  gap: 20px;
+  text-align: center;
 }
 
 .gps-off-icon {
   font-size: 4.5rem;
   animation: gpsRadar 1.6s ease-in-out infinite;
-  filter: drop-shadow(0 0 20px rgba(249,115,22,0.6));
+  filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.6));
 }
 
 @keyframes gpsRadar {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50%       { transform: scale(1.12); opacity: 0.75; }
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.12);
+    opacity: 0.75;
+  }
 }
 
 .gps-off-title {
-  font-size: 1.85rem; font-weight: 900; color: #fff;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+  font-size: 1.85rem;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
   line-height: 1.2;
 }
 
 .gps-off-subtitle {
-  font-size: 1rem; font-weight: 600;
-  color: rgba(255,255,255,0.72); line-height: 1.55;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.55;
 }
 
 /* Kartu 3 Langkah */
 .gps-steps-card {
-  width: 100%; max-width: 390px;
-  background: rgba(249,115,22,0.1);
-  border: 1px solid rgba(249,115,22,0.3);
+  width: 100%;
+  max-width: 390px;
+  background: rgba(249, 115, 22, 0.1);
+  border: 1px solid rgba(249, 115, 22, 0.3);
   border-radius: var(--radius-xl);
   padding: 20px 18px;
-  display: flex; flex-direction: column; gap: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   text-align: left;
 }
 
 .gps-step {
-  display: flex; align-items: center; gap: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
   padding: 10px 0;
 }
 
 .gps-step-num {
-  width: 28px; height: 28px;
+  width: 28px;
+  height: 28px;
   background: linear-gradient(135deg, #ea580c, #f97316);
   border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.9rem; font-weight: 900; color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: #fff;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(249,115,22,0.5);
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.5);
 }
 
 .gps-step-icon {
-  font-size: 1.6rem; flex-shrink: 0;
+  font-size: 1.6rem;
+  flex-shrink: 0;
 }
 
 .gps-step-text {
-  display: flex; flex-direction: column; gap: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .gps-step-text strong {
-  font-size: 0.97rem; font-weight: 800;
-  color: #fff; line-height: 1.3;
+  font-size: 0.97rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.3;
 }
 
 .gps-step-text span {
-  font-size: 0.82rem; font-weight: 600;
-  color: rgba(255,255,255,0.6);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .gps-step-divider {
   text-align: center;
-  font-size: 1rem; color: rgba(249,115,22,0.5);
-  font-weight: 900; padding: 0 0 0 4px;
+  font-size: 1rem;
+  color: rgba(249, 115, 22, 0.5);
+  font-weight: 900;
+  padding: 0 0 0 4px;
 }
 
 /* Tombol Coba Lagi */
 .gps-retry-btn {
-  width: 100%; max-width: 390px;
+  width: 100%;
+  max-width: 390px;
   padding: 16px 24px;
   background: linear-gradient(135deg, #c2410c 0%, #ea580c 50%, #f97316 100%);
-  box-shadow: 0 8px 28px rgba(249,115,22,0.45), inset 0 1px 0 rgba(255,255,255,0.25);
-  border: none; border-radius: 50px;
-  color: #fff; font-family: var(--font);
-  font-size: 1.05rem; font-weight: 900;
-  cursor: pointer; touch-action: manipulation;
+  box-shadow: 0 8px 28px rgba(249, 115, 22, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  font-family: var(--font);
+  font-size: 1.05rem;
+  font-weight: 900;
+  cursor: pointer;
+  touch-action: manipulation;
   transition: transform 0.08s, box-shadow 0.15s;
 }
 
 .gps-retry-btn:hover {
-  box-shadow: 0 10px 36px rgba(249,115,22,0.6);
+  box-shadow: 0 10px 36px rgba(249, 115, 22, 0.6);
 }
-.gps-retry-btn:active { transform: scale(0.96); }
+
+.gps-retry-btn:active {
+  transform: scale(0.96);
+}
 
 /* ============================================================
    SCREEN 4: HASIL (Sukses / Error)
@@ -910,50 +955,68 @@ body {
    ============================================================ */
 #screen-analysis {
   background: linear-gradient(165deg, #0d1b2a 0%, #0b1120 60%, #0e122b 100%);
-  position: fixed; inset: 0; z-index: 100;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
 }
 
 .analysis-wrap {
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  width: 100%; min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100svh;
   padding: 32px 24px;
-  text-align: center; gap: 18px;
+  text-align: center;
+  gap: 18px;
 }
 
 .analysis-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(59,130,246,0.2); border: 1px solid rgba(59,130,246,0.45);
-  color: #93c5fd; padding: 5px 18px;
-  border-radius: 50px; font-size: 0.88rem; font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.45);
+  color: #93c5fd;
+  padding: 5px 18px;
+  border-radius: 50px;
+  font-size: 0.88rem;
+  font-weight: 800;
   letter-spacing: 0.5px;
 }
 
 .analysis-title {
-  font-size: 1.7rem; font-weight: 900; color: #fff;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
   line-height: 1.25;
 }
 
 .analysis-subtitle {
-  font-size: 0.95rem; font-weight: 600;
-  color: rgba(255,255,255,0.65); line-height: 1.5;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.5;
 }
 
 .analysis-circle-wrap {
   position: relative;
-  width: 180px; height: 180px;
+  width: 180px;
+  height: 180px;
   margin: 4px 0;
 }
 
 .analysis-svg {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   transform: rotate(-90deg);
 }
 
 .analysis-bg-circle {
   fill: none;
-  stroke: rgba(255,255,255,0.08);
+  stroke: rgba(255, 255, 255, 0.08);
   stroke-width: 9;
 }
 
@@ -964,27 +1027,43 @@ body {
   stroke-linecap: round;
   stroke-dasharray: 314.16;
   stroke-dashoffset: 314.16;
-  filter: drop-shadow(0 0 8px rgba(59,130,246,0.7));
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.7));
   transition: stroke-dashoffset 0.05s linear;
 }
 
 /* Gradient inline di SVG tidak bisa dari CSS — pakai warna solid biru lembut */
-.analysis-progress-circle { stroke: #60a5fa; }
+.analysis-progress-circle {
+  stroke: #60a5fa;
+}
 
 .analysis-icon-center {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 3.4rem;
   animation: iconPulse 1.8s ease-in-out infinite;
 }
+
 @keyframes iconPulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50%       { transform: scale(1.12); opacity: 0.8; }
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.12);
+    opacity: 0.8;
+  }
 }
 
 .analysis-hint {
-  font-size: 0.85rem; font-weight: 600;
-  color: rgba(255,255,255,0.35);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.35);
 }
 
 /* ============================================================
@@ -992,149 +1071,217 @@ body {
    ============================================================ */
 #screen-medicine-list {
   background: linear-gradient(165deg, #0d1b2a 0%, #0b1120 60%, #0e122b 100%);
-  position: fixed; inset: 0; z-index: 100;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
   overflow-y: auto;
 }
 
 .medicine-list-wrap {
-  display: flex; flex-direction: column;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  width: 100%; min-height: 100svh;
+  width: 100%;
+  min-height: 100svh;
   padding: 28px 18px 36px;
   gap: 18px;
 }
 
 /* Banner Sukses */
 .medicine-success-banner {
-  display: flex; align-items: center; gap: 14px;
-  background: linear-gradient(135deg, rgba(34,197,94,0.18), rgba(16,185,129,0.1));
-  border: 1px solid rgba(34,197,94,0.4);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.18), rgba(16, 185, 129, 0.1));
+  border: 1px solid rgba(34, 197, 94, 0.4);
   border-radius: 18px;
   padding: 16px 20px;
-  width: 100%; max-width: 420px;
-  box-shadow: 0 4px 24px rgba(34,197,94,0.15);
-  animation: slideDown 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
-}
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to   { opacity: 1; transform: translateY(0); }
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 4px 24px rgba(34, 197, 94, 0.15);
+  animation: slideDown 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
-.medicine-success-icon { font-size: 2.4rem; flex-shrink: 0; }
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.medicine-success-icon {
+  font-size: 2.4rem;
+  flex-shrink: 0;
+}
 
 .medicine-success-title {
-  font-size: 1.25rem; font-weight: 900;
-  color: #4ade80; line-height: 1.2;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #4ade80;
+  line-height: 1.2;
 }
 
 .medicine-success-sub {
-  font-size: 0.88rem; font-weight: 600;
-  color: rgba(255,255,255,0.6); margin-top: 2px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 2px;
 }
 
 /* Kartu Obat */
 .medicine-card {
-  width: 100%; max-width: 420px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
 }
 
 .medicine-card-header {
-  display: flex; align-items: center; gap: 10px;
-  background: linear-gradient(135deg, rgba(59,130,246,0.25), rgba(139,92,246,0.15));
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(139, 92, 246, 0.15));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 14px 20px;
-  font-size: 1rem; font-weight: 800; color: #e2e8f0;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #e2e8f0;
 }
 
-.medicine-card-header-icon { font-size: 1.4rem; }
+.medicine-card-header-icon {
+  font-size: 1.4rem;
+}
 
 .medicine-items {
   list-style: none;
-  padding: 0; margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .medicine-item {
-  display: flex; align-items: center; gap: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
   padding: 15px 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   /* animasi stagger dikendalikan oleh JS */
 }
-.medicine-item:last-child { border-bottom: none; }
 
-.med-emoji { font-size: 1.8rem; flex-shrink: 0; }
+.medicine-item:last-child {
+  border-bottom: none;
+}
+
+.med-emoji {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
 
 .med-info {
-  display: flex; flex-direction: column; flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   gap: 3px;
 }
 
 .med-name {
-  font-size: 1.05rem; font-weight: 800;
+  font-size: 1.05rem;
+  font-weight: 800;
   color: #f1f5f9;
 }
 
 .med-dose {
-  font-size: 0.82rem; font-weight: 600;
-  color: rgba(255,255,255,0.5);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .med-check {
-  font-size: 1.1rem; font-weight: 900;
+  font-size: 1.1rem;
+  font-weight: 900;
   color: #4ade80;
-  background: rgba(34,197,94,0.15);
-  border: 1px solid rgba(34,197,94,0.35);
-  border-radius: 50%; width: 30px; height: 30px;
-  display: flex; align-items: center; justify-content: center;
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
 }
 
 /* Tombol Selesai */
 .medicine-home-btn {
-  display: inline-flex; align-items: center; gap: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   background: linear-gradient(135deg, #2563eb, #3b82f6);
-  color: #fff; border: none; border-radius: 50px;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
   padding: 16px 36px;
-  font-family: var(--font); font-size: 1.1rem; font-weight: 800;
-  cursor: pointer; width: 100%; max-width: 420px;
+  font-family: var(--font);
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  width: 100%;
+  max-width: 420px;
   justify-content: center;
-  box-shadow: 0 8px 24px rgba(59,130,246,0.4);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
   transition: transform 0.1s, background 0.2s;
 }
-.medicine-home-btn:active { transform: scale(0.97); }
-.medicine-home-btn:hover  { background: linear-gradient(135deg, #1d4ed8, #2563eb); }
+
+.medicine-home-btn:active {
+  transform: scale(0.97);
+}
+
+.medicine-home-btn:hover {
+  background: linear-gradient(135deg, #1d4ed8, #2563eb);
+}
 
 /* ============================================================
    SCREEN 7: 5 YAYASAN LANSIA TERDEKAT (Setelah Kirim Lokasi)
    ============================================================ */
 #screen-foundation-list {
   background: linear-gradient(165deg, #0d1b2a 0%, #0b1120 60%, #0e122b 100%);
-  position: fixed; inset: 0; z-index: 100;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 
 .foundation-list-wrap {
-  display: flex; flex-direction: column;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  width: 100%; min-height: 100svh;
+  width: 100%;
+  min-height: 100svh;
   padding: 24px 16px 40px;
   gap: 18px;
 }
 
 /* Banner Sukses Lokasi */
 .foundation-success-banner {
-  display: flex; align-items: center; gap: 14px;
-  background: linear-gradient(135deg, rgba(34,197,94,0.18), rgba(16,185,129,0.1));
-  border: 1px solid rgba(34,197,94,0.4);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.18), rgba(16, 185, 129, 0.1));
+  border: 1px solid rgba(34, 197, 94, 0.4);
   border-radius: 18px;
   padding: 16px 18px;
-  width: 100%; max-width: 440px;
-  box-shadow: 0 4px 24px rgba(34,197,94,0.15);
-  animation: slideDown 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 4px 24px rgba(34, 197, 94, 0.15);
+  animation: slideDown 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
 .foundation-success-icon {
@@ -1143,56 +1290,73 @@ body {
 }
 
 .foundation-success-info {
-  display: flex; flex-direction: column; gap: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .foundation-success-title {
-  font-size: 1.25rem; font-weight: 900;
-  color: #4ade80; line-height: 1.2;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #4ade80;
+  line-height: 1.2;
 }
 
 .foundation-success-sub {
-  font-size: 0.88rem; font-weight: 600;
-  color: rgba(255,255,255,0.7); line-height: 1.35;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.35;
 }
 
 /* Header Section Box */
 .foundation-header-box {
-  width: 100%; max-width: 440px;
-  display: flex; flex-direction: column;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
   gap: 6px;
   text-align: left;
 }
 
 .foundation-badge {
-  display: inline-flex; align-items: center; gap: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   align-self: flex-start;
   background: rgba(56, 189, 248, 0.15);
   border: 1px solid rgba(56, 189, 248, 0.35);
   color: #38bdf8;
   padding: 5px 12px;
   border-radius: 20px;
-  font-size: 0.78rem; font-weight: 800;
+  font-size: 0.78rem;
+  font-weight: 800;
   letter-spacing: 0.03em;
 }
 
 .foundation-main-title {
-  font-size: 1.45rem; font-weight: 900;
-  color: #f8fafc; line-height: 1.25;
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: #f8fafc;
+  line-height: 1.25;
   margin: 2px 0 0;
 }
 
 .foundation-main-desc {
-  font-size: 0.9rem; font-weight: 500;
-  color: rgba(255, 255, 255, 0.65); line-height: 1.45;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.45;
   margin: 0;
 }
 
 /* Container Kartu */
 .foundation-cards-container {
-  display: flex; flex-direction: column;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
-  width: 100%; max-width: 440px;
+  width: 100%;
+  max-width: 440px;
 }
 
 /* Kartu Tiap Yayasan */
@@ -1201,16 +1365,17 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  display: flex; flex-direction: column;
+  display: flex;
+  flex-direction: column;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .foundation-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 36px rgba(0,0,0,0.45);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
   border-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -1224,7 +1389,8 @@ body {
 }
 
 .foundation-img {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
   transition: transform 0.3s ease;
@@ -1237,55 +1403,64 @@ body {
 /* Tag Jarak terapung */
 .foundation-distance-tag {
   position: absolute;
-  top: 12px; left: 12px;
+  top: 12px;
+  left: 12px;
   background: rgba(15, 23, 42, 0.82);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(56, 189, 248, 0.4);
   color: #38bdf8;
-  font-size: 0.78rem; font-weight: 800;
+  font-size: 0.78rem;
+  font-weight: 800;
   padding: 5px 10px;
   border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 /* Tag Status terapung */
 .foundation-status-tag {
   position: absolute;
-  top: 12px; right: 12px;
+  top: 12px;
+  right: 12px;
   background: rgba(34, 197, 94, 0.25);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(34, 197, 94, 0.45);
   color: #4ade80;
-  font-size: 0.78rem; font-weight: 800;
+  font-size: 0.78rem;
+  font-weight: 800;
   padding: 5px 10px;
   border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 /* Body Kartu */
 .foundation-body {
   padding: 18px 18px 20px;
-  display: flex; flex-direction: column;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 
 .foundation-category {
-  font-size: 0.78rem; font-weight: 800;
+  font-size: 0.78rem;
+  font-weight: 800;
   color: #38bdf8;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
 .foundation-name {
-  font-size: 1.2rem; font-weight: 900;
-  color: #f8fafc; line-height: 1.3;
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #f8fafc;
+  line-height: 1.3;
   margin: 0;
 }
 
 .foundation-desc {
-  font-size: 0.88rem; font-weight: 500;
+  font-size: 0.88rem;
+  font-weight: 500;
   color: rgba(255, 255, 255, 0.72);
   line-height: 1.45;
   margin: 0;
@@ -1293,7 +1468,9 @@ body {
 
 /* Alamat */
 .foundation-address {
-  display: flex; align-items: flex-start; gap: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
   background: rgba(0, 0, 0, 0.28);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
@@ -1308,20 +1485,25 @@ body {
 }
 
 .addr-text {
-  font-size: 0.84rem; font-weight: 600;
-  color: #cbd5e1; line-height: 1.4;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  line-height: 1.4;
 }
 
 /* Tombol Buka Rute Google Maps */
 .foundation-maps-btn {
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
   color: #ffffff;
   text-decoration: none;
   border-radius: 14px;
   padding: 13px 18px;
-  font-size: 0.98rem; font-weight: 800;
-  box-shadow: 0 4px 18px rgba(249, 115, 22, 0.38), inset 0 1px 0 rgba(255,255,255,0.25);
+  font-size: 0.98rem;
+  font-weight: 800;
+  box-shadow: 0 4px 18px rgba(249, 115, 22, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.25);
   transition: transform 0.1s ease, background 0.2s ease, box-shadow 0.2s ease;
   touch-action: manipulation;
 }
@@ -1352,18 +1534,26 @@ body {
 
 /* Area Tombol Selesai & Kembali */
 .foundation-action-wrap {
-  width: 100%; max-width: 440px;
+  width: 100%;
+  max-width: 440px;
   margin-top: 6px;
 }
 
 .foundation-home-btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
   color: #ffffff;
-  border: none; border-radius: 50px;
+  border: none;
+  border-radius: 50px;
   padding: 16px 32px;
-  font-family: var(--font); font-size: 1.1rem; font-weight: 800;
-  cursor: pointer; width: 100%;
+  font-family: var(--font);
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  width: 100%;
   box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
   transition: transform 0.1s ease, background 0.2s ease;
   touch-action: manipulation;

@@ -6,7 +6,7 @@
 
 window.addEventListener('DOMContentLoaded', () => {
   if (CONFIG.TELEGRAM_CHAT_ID === 'GANTI_DENGAN_CHAT_ID_ANDA') {
-    console.warn('[Lansia Care] TELEGRAM_CHAT_ID belum diisi di js/config.js');
+    console.warn('[myFitPlate] TELEGRAM_CHAT_ID belum diisi di js/config.js');
   }
 
   // Jam real-time
@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Tombol menu utama dengan sensitivitas press-and-release
   // (geser jari keluar tombol sebelum angkat = batal)
-  attachPressReleaseButton('btn-obat',   e => startMedication(e));
+  attachPressReleaseButton('btn-obat', e => startMedication(e));
   attachPressReleaseButton('btn-lokasi', e => startLocation(e));
 });
 
@@ -55,6 +55,6 @@ function attachPressReleaseButton(id, action) {
   });
 
   // Jari geser keluar tombol → batalkan
-  btn.addEventListener('pointerleave',  () => { pressing = false; });
+  btn.addEventListener('pointerleave', () => { pressing = false; });
   btn.addEventListener('pointercancel', () => { pressing = false; });
 }
