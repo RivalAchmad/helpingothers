@@ -188,31 +188,9 @@ function triggerLocationGPS(event) {
 
 /**
  * Tampilkan layar panduan khusus saat GPS HP mati (POSITION_UNAVAILABLE).
- * Memberikan tombol pintasan buka Pengaturan Lokasi sistem Android.
+ * Memberikan panduan visual cara mengaktifkan GPS.
  */
 function showGpsOffScreen() {
   stopAllMedia();
   showScreen('screen-gps-off');
-}
-
-/**
- * Coba buka halaman Pengaturan Lokasi Android dari browser.
- * Bekerja di Chrome for Android via Intent URL.
- * Di browser lain, fallback dengan petunjuk manual.
- */
-function openLocationSettings() {
-  // Intent URL: hanya berfungsi di Chrome for Android
-  const intentUrl = 'intent://settings/location#Intent;scheme=android-settings;' +
-                    'package=com.android.settings;end';
-  try {
-    window.location.href = intentUrl;
-  } catch (_) {
-    // Fallback: tunjukkan pesan
-  }
-
-  // Setelah beberapa detik (jika tab tidak berpindah), tampilkan petunjuk manual
-  setTimeout(() => {
-    const hint = document.getElementById('gps-manual-hint');
-    if (hint) hint.style.display = 'block';
-  }, 1200);
 }

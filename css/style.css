@@ -628,7 +628,7 @@ body {
   align-items: center; justify-content: center;
   width: 100%; min-height: 100svh;
   padding: 32px 20px 36px;
-  gap: 18px; text-align: center;
+  gap: 20px; text-align: center;
 }
 
 .gps-off-icon {
@@ -653,85 +653,73 @@ body {
   color: rgba(255,255,255,0.72); line-height: 1.55;
 }
 
-/* Tombol Buka Pengaturan Lokasi */
-.gps-settings-btn {
+/* Kartu 3 Langkah */
+.gps-steps-card {
   width: 100%; max-width: 390px;
-  min-height: 110px;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 5px;
-  padding: 16px 18px;
-  background: linear-gradient(135deg, #c2410c 0%, #ea580c 50%, #f97316 100%);
-  box-shadow: 0 8px 32px rgba(249,115,22,0.5), 0 2px 8px rgba(0,0,0,0.5),
-              inset 0 1px 0 rgba(255,255,255,0.3);
-  border: none; border-radius: var(--radius-xl);
-  font-family: var(--font); color: #fff; cursor: pointer;
-  touch-action: manipulation;
-  transition: transform 0.08s ease, box-shadow 0.15s ease;
-  animation: gpsSettingsPulse 2s ease-in-out infinite;
-}
-
-@keyframes gpsSettingsPulse {
-  0%, 100% { box-shadow: 0 8px 32px rgba(249,115,22,0.5), 0 2px 8px rgba(0,0,0,0.5); }
-  50%       { box-shadow: 0 8px 48px rgba(249,115,22,0.8), 0 2px 8px rgba(0,0,0,0.5); }
-}
-
-.gps-settings-btn:active { transform: scale(0.96); }
-
-.gps-btn-icon { font-size: 2rem; }
-
-.gps-btn-text {
-  font-size: 1.3rem; font-weight: 900;
-  letter-spacing: 0.4px;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
-}
-
-.gps-btn-sub {
-  font-size: 0.82rem; font-weight: 700; opacity: 0.9;
-}
-
-/* Panduan manual */
-.gps-manual-hint {
-  width: 100%; max-width: 390px;
-  background: rgba(249,115,22,0.12);
+  background: rgba(249,115,22,0.1);
   border: 1px solid rgba(249,115,22,0.3);
-  border-radius: var(--radius-lg);
-  padding: 16px 18px;
+  border-radius: var(--radius-xl);
+  padding: 20px 18px;
+  display: flex; flex-direction: column; gap: 0;
   text-align: left;
-  animation: fadeInUp 0.35s ease both;
 }
 
-.gps-hint-title {
-  font-size: 0.95rem; font-weight: 800;
-  color: #fdba74; margin-bottom: 10px;
+.gps-step {
+  display: flex; align-items: center; gap: 14px;
+  padding: 10px 0;
 }
 
-.gps-hint-steps {
-  padding-left: 18px; margin: 0;
-  display: flex; flex-direction: column; gap: 8px;
+.gps-step-num {
+  width: 28px; height: 28px;
+  background: linear-gradient(135deg, #ea580c, #f97316);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; font-weight: 900; color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(249,115,22,0.5);
 }
 
-.gps-hint-steps li {
-  font-size: 0.92rem; font-weight: 600;
-  color: rgba(255,255,255,0.82); line-height: 1.4;
+.gps-step-icon {
+  font-size: 1.6rem; flex-shrink: 0;
 }
 
-.gps-hint-steps strong { color: #fde047; }
+.gps-step-text {
+  display: flex; flex-direction: column; gap: 2px;
+}
+
+.gps-step-text strong {
+  font-size: 0.97rem; font-weight: 800;
+  color: #fff; line-height: 1.3;
+}
+
+.gps-step-text span {
+  font-size: 0.82rem; font-weight: 600;
+  color: rgba(255,255,255,0.6);
+}
+
+.gps-step-divider {
+  text-align: center;
+  font-size: 1rem; color: rgba(249,115,22,0.5);
+  font-weight: 900; padding: 0 0 0 4px;
+}
 
 /* Tombol Coba Lagi */
 .gps-retry-btn {
   width: 100%; max-width: 390px;
-  padding: 14px 24px;
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 50px;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #c2410c 0%, #ea580c 50%, #f97316 100%);
+  box-shadow: 0 8px 28px rgba(249,115,22,0.45), inset 0 1px 0 rgba(255,255,255,0.25);
+  border: none; border-radius: 50px;
   color: #fff; font-family: var(--font);
-  font-size: 1rem; font-weight: 800;
+  font-size: 1.05rem; font-weight: 900;
   cursor: pointer; touch-action: manipulation;
-  transition: background 0.2s;
+  transition: transform 0.08s, box-shadow 0.15s;
 }
 
-.gps-retry-btn:hover { background: rgba(255,255,255,0.2); }
-.gps-retry-btn:active { transform: scale(0.97); }
+.gps-retry-btn:hover {
+  box-shadow: 0 10px 36px rgba(249,115,22,0.6);
+}
+.gps-retry-btn:active { transform: scale(0.96); }
 
 /* ============================================================
    SCREEN 4: HASIL (Sukses / Error)
