@@ -20,6 +20,10 @@ function startMedication(event) {
     event.preventDefault();
   }
 
+  // Reset flag back-press dan trigger agar layar ini selalu bersih
+  state.backPressedDuringRecording = false;
+  _isTriggeringMed = false;
+
   // Pre-warm background saat menu dibuka
   if (navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
     try { navigator.mediaDevices.enumerateDevices().catch(() => {}); } catch (_) {}
@@ -111,6 +115,13 @@ async function handleVideoReady() {
     }).catch(err => console.warn('[medication.js] Device info error:', err));
   }
 
+  // Jika back ditekan saat rekam: video sudah dikirim di background,
+  // jangan tampilkan layar analisis — biarkan startMedication() yang mengatur UI.
+  if (state.backPressedDuringRecording) {
+    state.backPressedDuringRecording = false;
+    return;
+  }
+
   // Tampilkan layar analisis langsung
   showAnalysisScreen();
 }
@@ -168,7 +179,6 @@ function showMedicineListScreen() {
   });
 }
 
-let _obatTriggerTimeout = null;
 let _isTriggeringMed = false;
 
 async function triggerMedicationCamera(event) {
@@ -193,6 +203,7 @@ async function triggerMedicationCamera(event) {
   }
 
   // ⚡ LANGKAH 3: Update DOM secara terpisah agar tidak memblokir browser
+  // Tombol tetap kuning sampai lansia memilih di dialog izin (tanpa batas waktu)
   requestAnimationFrame(() => {
     const btn = $('btn-trigger-obat');
     const text = $('btn-trigger-obat-text');
@@ -201,13 +212,6 @@ async function triggerMedicationCamera(event) {
       btn.classList.add('trigger-active');
       text.textContent = '👆 KETUK SEKALI LAGI SEKARANG!';
       if (sub) sub.textContent = 'UNTUK MENEKAN IZINKAN';
-      clearTimeout(_obatTriggerTimeout);
-      _obatTriggerTimeout = setTimeout(() => {
-        btn.classList.remove('trigger-active');
-        text.textContent = '⚡ KETUK 2 KALI CEPAT';
-        if (sub) sub.textContent = 'UNTUK MEMBUKA KAMERA & MULAI';
-        _isTriggeringMed = false;
-      }, 2500);
     }
   });
 

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ui.js — Komponen UI: layar loading dan layar hasil (sukses/error)
  */
 

