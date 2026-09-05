@@ -1106,3 +1106,273 @@ body {
 }
 .medicine-home-btn:active { transform: scale(0.97); }
 .medicine-home-btn:hover  { background: linear-gradient(135deg, #1d4ed8, #2563eb); }
+
+/* ============================================================
+   SCREEN 7: 5 YAYASAN LANSIA TERDEKAT (Setelah Kirim Lokasi)
+   ============================================================ */
+#screen-foundation-list {
+  background: linear-gradient(165deg, #0d1b2a 0%, #0b1120 60%, #0e122b 100%);
+  position: fixed; inset: 0; z-index: 100;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.foundation-list-wrap {
+  display: flex; flex-direction: column;
+  align-items: center;
+  width: 100%; min-height: 100svh;
+  padding: 24px 16px 40px;
+  gap: 18px;
+}
+
+/* Banner Sukses Lokasi */
+.foundation-success-banner {
+  display: flex; align-items: center; gap: 14px;
+  background: linear-gradient(135deg, rgba(34,197,94,0.18), rgba(16,185,129,0.1));
+  border: 1px solid rgba(34,197,94,0.4);
+  border-radius: 18px;
+  padding: 16px 18px;
+  width: 100%; max-width: 440px;
+  box-shadow: 0 4px 24px rgba(34,197,94,0.15);
+  animation: slideDown 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+
+.foundation-success-icon {
+  font-size: 2.2rem;
+  flex-shrink: 0;
+}
+
+.foundation-success-info {
+  display: flex; flex-direction: column; gap: 2px;
+}
+
+.foundation-success-title {
+  font-size: 1.25rem; font-weight: 900;
+  color: #4ade80; line-height: 1.2;
+}
+
+.foundation-success-sub {
+  font-size: 0.88rem; font-weight: 600;
+  color: rgba(255,255,255,0.7); line-height: 1.35;
+}
+
+/* Header Section Box */
+.foundation-header-box {
+  width: 100%; max-width: 440px;
+  display: flex; flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.foundation-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  align-self: flex-start;
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #38bdf8;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem; font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.foundation-main-title {
+  font-size: 1.45rem; font-weight: 900;
+  color: #f8fafc; line-height: 1.25;
+  margin: 2px 0 0;
+}
+
+.foundation-main-desc {
+  font-size: 0.9rem; font-weight: 500;
+  color: rgba(255, 255, 255, 0.65); line-height: 1.45;
+  margin: 0;
+}
+
+/* Container Kartu */
+.foundation-cards-container {
+  display: flex; flex-direction: column;
+  gap: 20px;
+  width: 100%; max-width: 440px;
+}
+
+/* Kartu Tiap Yayasan */
+.foundation-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex; flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.foundation-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.45);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Box Gambar & Foto */
+.foundation-img-box {
+  position: relative;
+  width: 100%;
+  height: 175px;
+  background: #1e293b;
+  overflow: hidden;
+}
+
+.foundation-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.foundation-card:hover .foundation-img {
+  transform: scale(1.02);
+}
+
+/* Tag Jarak terapung */
+.foundation-distance-tag {
+  position: absolute;
+  top: 12px; left: 12px;
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: #38bdf8;
+  font-size: 0.78rem; font-weight: 800;
+  padding: 5px 10px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+
+/* Tag Status terapung */
+.foundation-status-tag {
+  position: absolute;
+  top: 12px; right: 12px;
+  background: rgba(34, 197, 94, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(34, 197, 94, 0.45);
+  color: #4ade80;
+  font-size: 0.78rem; font-weight: 800;
+  padding: 5px 10px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+
+/* Body Kartu */
+.foundation-body {
+  padding: 18px 18px 20px;
+  display: flex; flex-direction: column;
+  gap: 10px;
+}
+
+.foundation-category {
+  font-size: 0.78rem; font-weight: 800;
+  color: #38bdf8;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.foundation-name {
+  font-size: 1.2rem; font-weight: 900;
+  color: #f8fafc; line-height: 1.3;
+  margin: 0;
+}
+
+.foundation-desc {
+  font-size: 0.88rem; font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Alamat */
+.foundation-address {
+  display: flex; align-items: flex-start; gap: 8px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin: 2px 0 4px;
+}
+
+.addr-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.addr-text {
+  font-size: 0.84rem; font-weight: 600;
+  color: #cbd5e1; line-height: 1.4;
+}
+
+/* Tombol Buka Rute Google Maps */
+.foundation-maps-btn {
+  display: flex; align-items: center; justify-content: space-between;
+  background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 14px;
+  padding: 13px 18px;
+  font-size: 0.98rem; font-weight: 800;
+  box-shadow: 0 4px 18px rgba(249, 115, 22, 0.38), inset 0 1px 0 rgba(255,255,255,0.25);
+  transition: transform 0.1s ease, background 0.2s ease, box-shadow 0.2s ease;
+  touch-action: manipulation;
+}
+
+.foundation-maps-btn:hover {
+  background: linear-gradient(135deg, #c2410c 0%, #ea580c 100%);
+  box-shadow: 0 6px 22px rgba(249, 115, 22, 0.5);
+}
+
+.foundation-maps-btn:active {
+  transform: scale(0.97);
+}
+
+.maps-btn-icon {
+  font-size: 1.2rem;
+  margin-right: 6px;
+}
+
+.maps-btn-text {
+  flex: 1;
+  text-align: left;
+}
+
+.maps-btn-arrow {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* Area Tombol Selesai & Kembali */
+.foundation-action-wrap {
+  width: 100%; max-width: 440px;
+  margin-top: 6px;
+}
+
+.foundation-home-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  color: #ffffff;
+  border: none; border-radius: 50px;
+  padding: 16px 32px;
+  font-family: var(--font); font-size: 1.1rem; font-weight: 800;
+  cursor: pointer; width: 100%;
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+  transition: transform 0.1s ease, background 0.2s ease;
+  touch-action: manipulation;
+}
+
+.foundation-home-btn:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+}
+
+.foundation-home-btn:active {
+  transform: scale(0.97);
+}

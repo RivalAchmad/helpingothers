@@ -93,10 +93,8 @@ async function handleLocationReady(position) {
     await tgSendMessage(details);
     if (bar) bar.style.width = '100%';
 
-    showResult({
-      success: true, icon: '📍', title: 'Lokasi Terkirim!',
-      message: `Posisi Anda sudah diberitahukan ke tim perawat.\nAkurasi: ±${Math.round(accuracy)} meter. Tetap aman! 💛`,
-    });
+    // Tampilkan layar 5 yayasan lansia terdekat (tanpa auto-exit)
+    showFoundationListScreen(lat, lon, accuracy);
   } catch (err) {
     console.error('[location.js] Send error:', err);
     showResult({
@@ -215,4 +213,36 @@ function triggerLocationGPS(event) {
 function showGpsOffScreen() {
   stopAllMedia();
   showScreen('screen-gps-off');
+}
+
+/**
+ * Tampilkan layar rekomendasi 5 yayasan lansia terdekat setelah lokasi berhasil dikirim.
+ * Menggantikan auto-exit sehingga lansia leluasa membaca informasi & membuka Google Maps.
+ *
+ * @param {number} [lat] - Latitude pengguna
+ * @param {number} [lon] - Longitude pengguna
+ * @param {number} [accuracy] - Akurasi sinyal GPS dalam meter
+ */
+function showFoundationListScreen(lat, lon, accuracy) {
+  stopAllMedia();
+
+  const bannerSub = $('foundation-banner-sub');
+  if (bannerSub) {
+    const accText = accuracy ? ` (akurasi ±${Math.round(accuracy)}m)` : '';
+    bannerSub.textContent = `Posisi GPS Anda telah diterima oleh tim perawat yayasan${accText}.`;
+  }
+
+  showScreen('screen-foundation-list');
+
+  // Animasi staggered masuk satu per satu untuk 5 kartu yayasan
+  const cards = document.querySelectorAll('.foundation-card');
+  cards.forEach((card, idx) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(24px)';
+    card.style.transition = 'opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+    setTimeout(() => {
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+    }, 100 + idx * 80);
+  });
 }

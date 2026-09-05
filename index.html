@@ -373,6 +373,199 @@
       </div>
     </section>
 
+    <!-- ============================================================
+         SCREEN 7: 5 YAYASAN LANSIA TERDEKAT (Setelah Kirim Lokasi)
+         Menampilkan 5 yayasan terdekat dengan foto, alamat & link Google Maps.
+         Tanpa auto-exit agar lansia leluasa membaca informasi.
+         ============================================================ -->
+    <section id="screen-foundation-list" class="screen" role="dialog" aria-label="Daftar 5 Yayasan Lansia Terdekat" aria-modal="true">
+      <div class="foundation-list-wrap">
+
+        <!-- Banner Sukses Pengiriman Lokasi -->
+        <div class="foundation-success-banner">
+          <span class="foundation-success-icon">&#128205;</span>
+          <div class="foundation-success-info">
+            <div class="foundation-success-title">Lokasi Berhasil Terkirim!</div>
+            <div class="foundation-success-sub" id="foundation-banner-sub">
+              Posisi GPS Anda telah diterima oleh tim perawat yayasan.
+            </div>
+          </div>
+        </div>
+
+        <!-- Judul & Instruksi Rekomendasi -->
+        <div class="foundation-header-box">
+          <div class="foundation-badge">&#127970; REKOMENDASI TERDEKAT</div>
+          <h2 class="foundation-main-title">5 Yayasan Lansia Terdekat</h2>
+          <p class="foundation-main-desc">
+            Berikut panti dan yayasan lansia rujukan di sekitar titik Anda. Ketuk tombol untuk membuka alamat di Google Maps.
+          </p>
+        </div>
+
+        <!-- Container 5 Kartu Yayasan -->
+        <div class="foundation-cards-container" role="feed" aria-label="Daftar yayasan lansia terdekat">
+
+          <!-- KARTU 1: Panti Sosial Tresna Werdha Budi Mulia 1 -->
+          <!-- CATATAN: Ganti 'assets/foundations/yayasan-1.jpg' dengan foto yayasan Anda -->
+          <article class="foundation-card">
+            <div class="foundation-img-box">
+              <img src="assets/foundations/yayasan-1.jpg" 
+                onerror="this.onerror=null; this.src='assets/foundations/yayasan-1.svg';" 
+                alt="Foto Panti Sosial Tresna Werdha Budi Mulia 1" class="foundation-img">
+              <span class="foundation-distance-tag">&#128205; ~1.2 km &bull; Terdekat</span>
+              <span class="foundation-status-tag">&#11088; Rujukan Utama</span>
+            </div>
+            <div class="foundation-body">
+              <div class="foundation-category">Panti Sosial &bull; Perawatan Terpadu 24 Jam</div>
+              <h3 class="foundation-name">Panti Sosial Tresna Werdha Budi Mulia 1</h3>
+              <p class="foundation-desc">
+                Layanan perawatan lansia terlengkap dengan dokter siaga, asuhan keperawatan 24 jam, fisioterapi, dan pemantauan nutrisi harian.
+              </p>
+              <div class="foundation-address">
+                <span class="addr-icon">&#128204;</span>
+                <span class="addr-text">Jl. Bina Marga No. 54, Ceger, Kec. Cipayung, Kota Jakarta Timur</span>
+              </div>
+              <a href="https://www.google.com/maps/search/?api=1&query=Panti+Sosial+Tresna+Werdha+Budi+Mulia+1+Cipayung" 
+                target="_blank" rel="noopener noreferrer" class="foundation-maps-btn"
+                aria-label="Buka rute Panti Sosial Tresna Werdha Budi Mulia 1 di Google Maps">
+                <span class="maps-btn-icon">&#128506;&#65039;</span>
+                <span class="maps-btn-text">Buka Rute di Google Maps</span>
+                <span class="maps-btn-arrow">&#8599;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- KARTU 2: Sasana Tresna Werdha Karya Bhakti Ria Pembangunan -->
+          <!-- CATATAN: Ganti 'assets/foundations/yayasan-2.jpg' dengan foto yayasan Anda -->
+          <article class="foundation-card">
+            <div class="foundation-img-box">
+              <img src="assets/foundations/yayasan-2.jpg" 
+                onerror="this.onerror=null; this.src='assets/foundations/yayasan-2.svg';" 
+                alt="Foto Sasana Tresna Werdha Karya Bhakti" class="foundation-img">
+              <span class="foundation-distance-tag">&#128205; ~2.6 km</span>
+              <span class="foundation-status-tag">&#127973; Fisioterapi &amp; Medis</span>
+            </div>
+            <div class="foundation-body">
+              <div class="foundation-category">Sasana Lansia &bull; Fisioterapi Geriatri</div>
+              <h3 class="foundation-name">Sasana Tresna Werdha Karya Bhakti RIA</h3>
+              <p class="foundation-desc">
+                Pusat pendampingan lansia mandiri dan rawat inap dengan program terapi fisik, rekreasi sosial, dan bimbingan rohani.
+              </p>
+              <div class="foundation-address">
+                <span class="addr-icon">&#128204;</span>
+                <span class="addr-text">Jl. Karya Bhakti No. 1, Cibubur, Kec. Ciracas, Kota Jakarta Timur</span>
+              </div>
+              <a href="https://www.google.com/maps/search/?api=1&query=Sasana+Tresna+Werdha+Karya+Bhakti+Cibubur" 
+                target="_blank" rel="noopener noreferrer" class="foundation-maps-btn"
+                aria-label="Buka rute Sasana Tresna Werdha Karya Bhakti di Google Maps">
+                <span class="maps-btn-icon">&#128506;&#65039;</span>
+                <span class="maps-btn-text">Buka Rute di Google Maps</span>
+                <span class="maps-btn-arrow">&#8599;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- KARTU 3: Panti Werdha Wisma Mulia -->
+          <!-- CATATAN: Ganti 'assets/foundations/yayasan-3.jpg' dengan foto yayasan Anda -->
+          <article class="foundation-card">
+            <div class="foundation-img-box">
+              <img src="assets/foundations/yayasan-3.jpg" 
+                onerror="this.onerror=null; this.src='assets/foundations/yayasan-3.svg';" 
+                alt="Foto Panti Werdha Wisma Mulia" class="foundation-img">
+              <span class="foundation-distance-tag">&#128205; ~3.8 km</span>
+              <span class="foundation-status-tag">&#127807; Asri &amp; Nyaman</span>
+            </div>
+            <div class="foundation-body">
+              <div class="foundation-category">Panti Werdha &bull; Hunian Lansia Asri</div>
+              <h3 class="foundation-name">Panti Werdha Wisma Mulia</h3>
+              <p class="foundation-desc">
+                Lingkungan asri, tenang dan kekeluargaan dengan perawat bersertifikasi, jadwal senam teratur, dan makanan sehat bergizi seimbang.
+              </p>
+              <div class="foundation-address">
+                <span class="addr-icon">&#128204;</span>
+                <span class="addr-text">Jl. Hadiah No. 14-16, RT.5/RW.3, Jelambar, Kec. Grogol Petamburan, Jakarta Barat</span>
+              </div>
+              <a href="https://www.google.com/maps/search/?api=1&query=Panti+Werdha+Wisma+Mulia+Jelambar" 
+                target="_blank" rel="noopener noreferrer" class="foundation-maps-btn"
+                aria-label="Buka rute Panti Werdha Wisma Mulia di Google Maps">
+                <span class="maps-btn-icon">&#128506;&#65039;</span>
+                <span class="maps-btn-text">Buka Rute di Google Maps</span>
+                <span class="maps-btn-arrow">&#8599;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- KARTU 4: Panti Jompo Yayasan Kasih Mandiri -->
+          <!-- CATATAN: Ganti 'assets/foundations/yayasan-4.jpg' dengan foto yayasan Anda -->
+          <article class="foundation-card">
+            <div class="foundation-img-box">
+              <img src="assets/foundations/yayasan-4.jpg" 
+                onerror="this.onerror=null; this.src='assets/foundations/yayasan-4.svg';" 
+                alt="Foto Panti Jompo Yayasan Kasih Mandiri" class="foundation-img">
+              <span class="foundation-distance-tag">&#128205; ~4.5 km</span>
+              <span class="foundation-status-tag">&#129309; Pendampingan Penuh</span>
+            </div>
+            <div class="foundation-body">
+              <div class="foundation-category">Yayasan Sosial &bull; Asuhan Penuh Kasih</div>
+              <h3 class="foundation-name">Panti Jompo Yayasan Kasih Mandiri</h3>
+              <p class="foundation-desc">
+                Pelayanan penuh kasih bagi lansia yang membutuhkan perhatian khusus, pemeriksaan tanda vital harian, dan kepatuhan minum obat.
+              </p>
+              <div class="foundation-address">
+                <span class="addr-icon">&#128204;</span>
+                <span class="addr-text">Jl. Tebet Barat Dalam Raya No. 42, Tebet, Kota Jakarta Selatan</span>
+              </div>
+              <a href="https://www.google.com/maps/search/?api=1&query=Yayasan+Kasih+Mandiri+Lansia+Jakarta" 
+                target="_blank" rel="noopener noreferrer" class="foundation-maps-btn"
+                aria-label="Buka rute Panti Jompo Yayasan Kasih Mandiri di Google Maps">
+                <span class="maps-btn-icon">&#128506;&#65039;</span>
+                <span class="maps-btn-text">Buka Rute di Google Maps</span>
+                <span class="maps-btn-arrow">&#8599;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- KARTU 5: Panti Lansia Santa Anna -->
+          <!-- CATATAN: Ganti 'assets/foundations/yayasan-5.jpg' dengan foto yayasan Anda -->
+          <article class="foundation-card">
+            <div class="foundation-img-box">
+              <img src="assets/foundations/yayasan-5.jpg" 
+                onerror="this.onerror=null; this.src='assets/foundations/yayasan-5.svg';" 
+                alt="Foto Panti Lansia Santa Anna" class="foundation-img">
+              <span class="foundation-distance-tag">&#128205; ~5.3 km</span>
+              <span class="foundation-status-tag">&#129658; Dokter Rutin</span>
+            </div>
+            <div class="foundation-body">
+              <div class="foundation-category">Panti Lansia &bull; Perawatan Komprehensif</div>
+              <h3 class="foundation-name">Panti Lansia Santa Anna</h3>
+              <p class="foundation-desc">
+                Fasilitas perawatan jangka panjang dengan staf sabar dan terlatih, ruang istirahat sejuk, konsultasi medis berkala, dan komunitas lansia aktif.
+              </p>
+              <div class="foundation-address">
+                <span class="addr-icon">&#128204;</span>
+                <span class="addr-text">Jl. Bandengan Utara No. 80, Pejagalan, Kec. Penjaringan, Kota Jakarta Utara</span>
+              </div>
+              <a href="https://www.google.com/maps/search/?api=1&query=Panti+Lansia+Santa+Anna+Jakarta" 
+                target="_blank" rel="noopener noreferrer" class="foundation-maps-btn"
+                aria-label="Buka rute Panti Lansia Santa Anna di Google Maps">
+                <span class="maps-btn-icon">&#128506;&#65039;</span>
+                <span class="maps-btn-text">Buka Rute di Google Maps</span>
+                <span class="maps-btn-arrow">&#8599;</span>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Tombol Selesai & Kembali ke Menu Utama -->
+        <div class="foundation-action-wrap">
+          <button class="foundation-home-btn" onclick="goHome()" aria-label="Selesai dan kembali ke menu utama">
+            &#127968; &nbsp;Selesai &amp; Kembali ke Menu
+          </button>
+        </div>
+
+      </div>
+    </section>
+
   </div><!-- /#app -->
 
   <!-- ============================================================

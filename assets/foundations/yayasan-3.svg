@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4c1d95" />
+      <stop offset="60%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="340" fill="url(#bg3)" />
+  <circle cx="510" cy="70" r="120" fill="rgba(255,255,255,0.08)" />
+  
+  <!-- Garden Residence Illustration -->
+  <g transform="translate(160, 50)" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="40" y="70" width="200" height="150" rx="10" fill="rgba(255,255,255,0.12)" />
+    <!-- Classic Triangle Roof -->
+    <polygon points="140,15 20,70 260,70" fill="rgba(255,255,255,0.2)" />
+    <!-- Arched Windows -->
+    <path d="M 60,130 L 60,105 A 15,15 0 0,1 90,105 L 90,130 Z" fill="rgba(255,255,255,0.3)" />
+    <path d="M 190,130 L 190,105 A 15,15 0 0,1 220,105 L 220,130 Z" fill="rgba(255,255,255,0.3)" />
+    <!-- Center Door -->
+    <path d="M 120,220 L 120,165 A 20,20 0 0,1 160,165 L 160,220 Z" fill="rgba(255,255,255,0.35)" />
+    <!-- Star Emblem -->
+    <circle cx="140" cy="45" r="10" fill="#facc15" stroke="none" />
+  </g>
+
+  <rect x="30" y="275" width="540" height="45" rx="12" fill="rgba(0,0,0,0.3)" />
+  <text x="300" y="303" text-anchor="middle" fill="#faf5ff" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="16" font-weight="bold">
+    Panti Werdha Wisma Mulia
+  </text>
+</svg>

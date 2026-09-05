@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" />
+      <stop offset="60%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="340" fill="url(#bg2)" />
+  <circle cx="500" cy="80" r="130" fill="rgba(255,255,255,0.08)" />
+  <circle cx="100" cy="270" r="90" fill="rgba(255,255,255,0.06)" />
+  
+  <!-- Hospital / Care Facility Building -->
+  <g transform="translate(170, 50)" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="20" y="50" width="220" height="170" rx="12" fill="rgba(255,255,255,0.12)" />
+    <!-- Roof line -->
+    <line x1="10" y1="50" x2="250" y2="50" stroke-width="5" stroke="rgba(255,255,255,0.5)" />
+    <!-- Windows Matrix -->
+    <rect x="40" y="75" width="35" height="30" rx="4" fill="rgba(255,255,255,0.3)" />
+    <rect x="90" y="75" width="35" height="30" rx="4" fill="rgba(255,255,255,0.3)" />
+    <rect x="140" y="75" width="35" height="30" rx="4" fill="rgba(255,255,255,0.3)" />
+    <rect x="190" y="75" width="35" height="30" rx="4" fill="rgba(255,255,255,0.3)" />
+
+    <rect x="40" y="120" width="35" height="30" rx="4" fill="rgba(255,255,255,0.3)" />
+    <rect x="90" y="120" width="35" height="30" rx="4" fill="rgba(255,255,255,0.3)" />
+    <rect x="140" y="120" width="35" height="30" rx="4" fill="rgba(255,255,255,0.3)" />
+    <rect x="190" y="120" width="35" height="30" rx="4" fill="rgba(255,255,255,0.3)" />
+
+    <!-- Entrance -->
+    <rect x="105" y="170" width="50" height="50" rx="6" fill="rgba(255,255,255,0.4)" />
+    <!-- Red Cross / Heart Sign -->
+    <circle cx="130" cy="28" r="16" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2" />
+    <path d="M130,20 L130,36 M122,28 L138,28" stroke="#f43f5e" stroke-width="4" stroke-linecap="round" />
+  </g>
+
+  <rect x="30" y="275" width="540" height="45" rx="12" fill="rgba(0,0,0,0.3)" />
+  <text x="300" y="303" text-anchor="middle" fill="#eff6ff" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="16" font-weight="bold">
+    Sasana Tresna Werdha Karya Bhakti Ria Pembangunan
+  </text>
+</svg>
