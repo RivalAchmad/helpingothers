@@ -11,10 +11,14 @@ if (typeof navigator !== 'undefined' && navigator.permissions && navigator.permi
   try { navigator.permissions.query({ name: 'geolocation' }).catch(() => {}); } catch (_) {}
 }
 
+let _locOpenedAt = 0;
+
 function startLocation(event) {
   if (event && (event.type === 'pointerdown' || event.type === 'touchstart')) {
     event.preventDefault();
   }
+
+  _locOpenedAt = Date.now();
 
   // Reset flag cancel dan trigger agar layar ini selalu bersih
   state.locCancelled = false;
@@ -50,6 +54,15 @@ function startLocation(event) {
 
   const locVideo = $('loc-video');
   if (locVideo) locVideo.pause();
+
+  // Cegah ghost click / tap-through dari tombol home
+  const btnTrigger = $('btn-trigger-lokasi');
+  if (btnTrigger) {
+    btnTrigger.style.pointerEvents = 'none';
+    setTimeout(() => {
+      if (btnTrigger) btnTrigger.style.pointerEvents = '';
+    }, 400);
+  }
 }
 
 async function handleLocationReady(position) {
@@ -98,6 +111,15 @@ let _isTriggeringLoc = false;
 function triggerLocationGPS(event) {
   if (event && (event.type === 'pointerdown' || event.type === 'touchstart')) {
     event.preventDefault();
+  }
+
+  // Cegah tap bocor (ghost click / click-through) dari tombol home
+  if (Date.now() - _locOpenedAt < 400) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    return;
   }
 
   if (_isTriggeringLoc) return;

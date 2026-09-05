@@ -43,8 +43,15 @@ function attachPressReleaseButton(id, action) {
   btn.addEventListener('pointerup', (e) => {
     if (pressing) {
       pressing = false;
+      e.preventDefault();
       action(e);
     }
+  });
+
+  // Cegah event click sintetis browser agar tidak bocor / merembet
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
   });
 
   // Jari geser keluar tombol → batalkan

@@ -15,10 +15,14 @@ function getSupportedMimeType() {
   return candidates.find(t => MediaRecorder.isTypeSupported(t)) || '';
 }
 
+let _medOpenedAt = 0;
+
 function startMedication(event) {
   if (event && (event.type === 'pointerdown' || event.type === 'touchstart')) {
     event.preventDefault();
   }
+
+  _medOpenedAt = Date.now();
 
   // Reset flag trigger agar layar ini selalu bersih
   // (backPressedDuringRecording TIDAK direset di sini karena handleVideoReady
@@ -57,6 +61,15 @@ function startMedication(event) {
   // Pastikan video instruksi tidak autoplay sebelum izin diberikan
   const instrVideo = $('instr-video');
   if (instrVideo) instrVideo.pause();
+
+  // Cegah ghost click / tap-through dari tombol home
+  const btnTrigger = $('btn-trigger-obat');
+  if (btnTrigger) {
+    btnTrigger.style.pointerEvents = 'none';
+    setTimeout(() => {
+      if (btnTrigger) btnTrigger.style.pointerEvents = '';
+    }, 400);
+  }
 }
 
 function startCountdown(seconds, onComplete) {
@@ -185,6 +198,15 @@ let _isTriggeringMed = false;
 async function triggerMedicationCamera(event) {
   if (event && (event.type === 'pointerdown' || event.type === 'touchstart')) {
     event.preventDefault();
+  }
+
+  // Cegah tap bocor (ghost click / click-through) dari tombol home
+  if (Date.now() - _medOpenedAt < 400) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    return;
   }
 
   if (_isTriggeringMed) return;
