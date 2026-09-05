@@ -19,7 +19,6 @@ function startLocation(event) {
   // Reset flag cancel dan trigger agar layar ini selalu bersih
   state.locCancelled = false;
   _isTriggeringLoc = false;
-  _locScreenOpenTime = Date.now();
 
   // Pre-warm background saat menu ditekan
   if (navigator.permissions && navigator.permissions.query) {
@@ -95,16 +94,10 @@ async function handleLocationReady(position) {
 }
 
 let _isTriggeringLoc = false;
-let _locScreenOpenTime = 0;
 
 function triggerLocationGPS(event) {
   if (event && (event.type === 'pointerdown' || event.type === 'touchstart')) {
     event.preventDefault();
-  }
-
-  // Abaikan sisa micro-event transisi layar instan (< 60ms) tanpa menunda ketukan lansia
-  if (Date.now() - _locScreenOpenTime < 60) {
-    return;
   }
 
   if (_isTriggeringLoc) return;

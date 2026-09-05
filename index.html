@@ -100,7 +100,7 @@
         <!-- FASE 1: Tombol Ketuk 2x + animasi tap (tampil saat awal, sebelum video) -->
         <div id="med-bottom-trigger" class="trigger-phase">
           <button id="btn-trigger-obat" class="btn-bottom-trigger btn-trigger-green"
-            onpointerdown="triggerMedicationCamera(event)"
+            onpointerdown="triggerMedicationCamera(event)" onclick="triggerMedicationCamera(event)"
             aria-label="Ketuk dua kali cepat untuk membuka kamera dan mulai merekam">
             <span class="trigger-main-text" id="btn-trigger-obat-text">&#9889; KETUK 2 KALI CEPAT</span>
             <span class="trigger-sub-text" id="btn-trigger-obat-sub">UNTUK MEMBUKA KAMERA &amp; MULAI</span>
@@ -159,18 +159,18 @@
           </p>
         </div>
 
-        <!-- FASE 1: Animasi tap di atas + Tombol Ketuk 2x sejajar dialog perizinan lokasi -->
+        <!-- FASE 1: Tombol Ketuk 2x + animasi tap (tampil saat awal, sebelum video) -->
         <div id="loc-bottom-trigger" class="trigger-phase">
-          <!-- Animasi tap dipindahkan ke atas tombol (khusus menu lokasi) -->
-          <div class="tap-anim-wrap" aria-hidden="true">
-            <img src="assets/Right double-tap.svg" class="tap-anim-svg" alt="animasi ketuk dua kali">
-          </div>
           <button id="btn-trigger-lokasi" class="btn-bottom-trigger btn-trigger-orange"
-            onpointerdown="triggerLocationGPS(event)"
+            onpointerdown="triggerLocationGPS(event)" onclick="triggerLocationGPS(event)"
             aria-label="Ketuk dua kali cepat untuk membagikan koordinat lokasi">
             <span class="trigger-main-text" id="btn-trigger-lokasi-text">&#9889; KETUK 2 KALI CEPAT</span>
             <span class="trigger-sub-text" id="btn-trigger-lokasi-sub">UNTUK MENGIRIM POSISI LOKASI</span>
           </button>
+          <!-- Animasi tap di bawah tombol agar tidak hampa -->
+          <div class="tap-anim-wrap" aria-hidden="true">
+            <img src="assets/Right double-tap.svg" class="tap-anim-svg" alt="animasi ketuk dua kali">
+          </div>
           <button class="flow-cancel-btn" onclick="goHome()" aria-label="Kembali ke menu utama">
             &#8592; KEMBALI
           </button>
