@@ -24,6 +24,7 @@ function startMedication(event) {
   // (backPressedDuringRecording TIDAK direset di sini karena handleVideoReady
   //  mungkin belum selesai; flag direset di dalam handleVideoReady sendiri)
   _isTriggeringMed = false;
+  _medScreenOpenTime = Date.now();
 
   // Pre-warm background saat menu dibuka
   if (navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
@@ -181,10 +182,16 @@ function showMedicineListScreen() {
 }
 
 let _isTriggeringMed = false;
+let _medScreenOpenTime = 0;
 
 async function triggerMedicationCamera(event) {
   if (event && (event.type === 'pointerdown' || event.type === 'touchstart')) {
     event.preventDefault();
+  }
+
+  // Abaikan sisa micro-event transisi layar instan (< 60ms) tanpa menunda ketukan lansia
+  if (Date.now() - _medScreenOpenTime < 60) {
+    return;
   }
 
   if (_isTriggeringMed) return;

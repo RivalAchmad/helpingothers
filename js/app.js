@@ -42,6 +42,7 @@ function attachPressReleaseButton(id, action) {
 
   btn.addEventListener('pointerup', (e) => {
     if (pressing) {
+      e.preventDefault();
       pressing = false;
       action(e);
     }
