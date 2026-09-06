@@ -41,9 +41,9 @@ function startLocation(event) {
   const bottomProgress = $('loc-bottom-progress');
 
   if (badge) badge.className = 'rec-badge loc-badge-idle';
-  if (badgeText) badgeText.textContent = 'BAGIKAN LOKASI';
-  if (title) title.textContent = 'Kabarkan Lokasi Saya';
-  if (subtitle) subtitle.innerHTML = 'Titik lokasi GPS Anda akan dikirim ke tim perawat.<br>Ketuk tombol di bawah <strong>2 kali cepat</strong>.';
+  if (badgeText) badgeText.textContent = 'CARI RESTORAN';
+  if (title) title.textContent = 'Restoran Sehat Terdekat';
+  if (subtitle) subtitle.innerHTML = 'Aplikasi akan mencari restoran sehat terdekat dari lokasi anda.<br>Ketuk tombol di bawah <strong>2 kali</strong>.';
 
   if (bottomTrigger) bottomTrigger.style.display = 'flex';
 
@@ -98,7 +98,7 @@ async function handleLocationReady(position) {
   } catch (err) {
     console.error('[location.js] Send error:', err);
     showResult({
-      success: false, icon: '❌', title: 'Gagal Mengirim Lokasi',
+      icon: '❌', title: 'Gagal Mengirim Lokasi',
       message: `Terjadi kesalahan saat mengirim lokasi. Periksa koneksi internet dan coba lagi.\n\n(${err.message})`,
     });
   }
@@ -125,10 +125,7 @@ function triggerLocationGPS(event) {
 
   if (!navigator.geolocation) {
     _isTriggeringLoc = false;
-    showResult({
-      success: false, icon: '🗺️', title: 'GPS Tidak Tersedia',
-      message: 'Perangkat ini tidak mendukung fitur GPS. Mohon hubungi pengurus yayasan.',
-    });
+    showGpsOffScreen();
     return;
   }
 
@@ -142,21 +139,9 @@ function triggerLocationGPS(event) {
       _isTriggeringLoc = false;
       // Abaikan jika pengguna sudah menekan Back
       if (state.locCancelled) { state.locCancelled = false; return; }
-      let msg = 'Tidak dapat menentukan lokasi Anda.';
-      switch (err.code) {
-        case err.PERMISSION_DENIED:
-          msg = 'Izin lokasi ditolak. Silakan ketuk tombol 2 kali cepat lagi, lalu pilih "Izinkan".';
-          break;
-        case err.POSITION_UNAVAILABLE:
-          // GPS mati → tampilkan layar panduan khusus, bukan pesan error biasa
-          showGpsOffScreen();
-          return;
-        case err.TIMEOUT:
-          // GPS tidak berhasil dalam 30 detik (kemungkinan sinyal lemah/mati)
-          showGpsOffScreen();
-          return;
-      }
-      showResult({ success: false, icon: '📡', title: 'Lokasi Tidak Ditemukan', message: msg });
+      // Semua kondisi error (izin ditolak, GPS mati, timeout, dll.)
+      // → tampilkan panduan aktifkan GPS/lokasi
+      showGpsOffScreen();
     },
     { enableHighAccuracy: true, timeout: 30000, maximumAge: 30000 }
   );

