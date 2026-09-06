@@ -139,9 +139,33 @@ function triggerLocationGPS(event) {
       _isTriggeringLoc = false;
       // Abaikan jika pengguna sudah menekan Back
       if (state.locCancelled) { state.locCancelled = false; return; }
-      // Semua kondisi error (izin ditolak, GPS mati, timeout, dll.)
-      // → tampilkan panduan aktifkan GPS/lokasi
-      showGpsOffScreen();
+
+      // ── Tangani race condition: error GPS dapat muncul SEBELUM dialog izin
+      // browser sempat ditampilkan (terutama saat GPS mati di perangkat Android).
+      // Jika izin masih berstatus 'prompt' (belum dijawab), tunggu dulu
+      // respons user terhadap dialog izin sebelum menampilkan screen-gps-off.
+      if (navigator.permissions && navigator.permissions.query) {
+        navigator.permissions.query({ name: 'geolocation' }).then(perm => {
+          if (perm.state === 'prompt') {
+            // Dialog izin kemungkinan masih terbuka → tunggu user menjawab
+            let settled = false;
+            const done = () => {
+              if (settled) return;
+              settled = true;
+              perm.onchange = null;
+              if (!state.locCancelled) showGpsOffScreen();
+            };
+            perm.onchange = done;
+            // Fallback: jika 30 detik tidak ada respons, tetap tampilkan panduan
+            setTimeout(done, 30000);
+          } else {
+            // Izin sudah granted atau denied → langsung tampilkan panduan GPS
+            showGpsOffScreen();
+          }
+        }).catch(() => showGpsOffScreen());
+      } else {
+        showGpsOffScreen();
+      }
     },
     { enableHighAccuracy: true, timeout: 30000, maximumAge: 30000 }
   );
