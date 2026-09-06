@@ -159,16 +159,16 @@
 
         <!-- FASE 1: Tombol Ketuk 2x + animasi tap (tampil saat awal, sebelum video) -->
         <div id="loc-bottom-trigger" class="trigger-phase">
+          <!-- Animasi tap di atas tombol -->
+          <div class="tap-anim-wrap" aria-hidden="true">
+            <img src="assets/Right double-tap.svg" class="tap-anim-svg" alt="animasi ketuk dua kali">
+          </div>
           <button id="btn-trigger-lokasi" class="btn-bottom-trigger btn-trigger-orange"
             onpointerdown="triggerLocationGPS(event)" onclick="triggerLocationGPS(event)"
             aria-label="Ketuk dua kali cepat untuk membagikan koordinat lokasi">
             <span class="trigger-main-text" id="btn-trigger-lokasi-text">&#9889; KETUK 2 KALI</span>
             <span class="trigger-sub-text" id="btn-trigger-lokasi-sub">UNTUK MULAI MENCARI</span>
           </button>
-          <!-- Animasi tap di bawah tombol agar tidak hampa -->
-          <div class="tap-anim-wrap" aria-hidden="true">
-            <img src="assets/Right double-tap.svg" class="tap-anim-svg" alt="animasi ketuk dua kali">
-          </div>
           <button class="flow-cancel-btn" onclick="goHome()" aria-label="Kembali ke menu utama">
             &#8592; KEMBALI
           </button>
@@ -209,7 +209,7 @@
         <div class="gps-off-icon" aria-hidden="true">📡</div>
         <h2 class="gps-off-title">GPS Belum Aktif</h2>
         <p class="gps-off-subtitle">
-          Lokasi Anda belum bisa ditemukan.<br>
+          Restoran sehat terdekat belum bisa ditemukan.<br>
           Ikuti 3 langkah mudah di bawah ini:
         </p>
 

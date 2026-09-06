@@ -1,33 +1,22 @@
 /**
  * utils.js — Helper & utilitas umum
- * Berisi: DOM query, screen switcher, media cleanup, jam real-time,
- *         dan penyadap tombol Back hardware.
  */
 
 /** Shortcut querySelector by ID */
 const $ = id => document.getElementById(id);
 
-/**
- * Tampilkan screen tertentu, sembunyikan yang lain.
- * @param {string} id - ID elemen section screen
- */
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   $(id).classList.add('active');
   window.scrollTo(0, 0);
 }
 
-/** Kembali ke halaman utama dan bersihkan semua resource */
 function goHome() {
   clearTimeout(state.autoResetTimer);
   stopAllMedia();
   showScreen('screen-main');
 }
 
-/**
- * Hentikan semua track kamera/audio dan reset state media.
- * Dipanggil setelah rekaman selesai atau dibatalkan.
- */
 function stopAllMedia() {
   if (state.mediaStream) {
     state.mediaStream.getTracks().forEach(t => t.stop());
@@ -43,7 +32,6 @@ function stopAllMedia() {
   state.recordedChunks = [];
 }
 
-/** Update jam real-time WIB di halaman utama */
 function updateClock() {
   const opts = {
     weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
@@ -53,23 +41,15 @@ function updateClock() {
   $('current-time').textContent = new Date().toLocaleString('id-ID', opts) + ' WIB';
 }
 
-/* ── Back Button Hardware Handler ── */
-
-/** Push state palsu ke History API agar tombol Back fisik tertangkap */
-function pushHistoryState() {
-  history.pushState({ lansiaApp: true }, '');
-}
-
 /**
  * Inisialisasi penyadap tombol Back hardware.
- * Mencegah web tertutup saat pengguna menekan Back di luar screen-main.
- * Harus dipanggil sekali di DOMContentLoaded (lihat app.js).
+ * Mencegah web tertutup saat user menekan Back di luar screen-main.
+ * Harus dipanggil sekali di DOMContentLoaded.
  */
 function initBackHandler() {
-  pushHistoryState();
-  window.addEventListener('popstate', function () {
-    // Re-push agar back berikutnya juga tertangkap
-    pushHistoryState();
+  history.pushState({ lansiaApp: true }, '');
+  window.addEventListener('popstate', () => {
+    history.pushState({ lansiaApp: true }, '');
     _handleBackPress();
   });
 }

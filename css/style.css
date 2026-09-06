@@ -342,11 +342,7 @@ body {
   color: #fff;
 }
 
-.rec-badge-uploading {
-  background: rgba(59, 130, 246, 0.85);
-  border-color: rgba(59, 130, 246, 0.9);
-  color: #fff;
-}
+
 
 .loc-badge-idle {
   background: rgba(249, 115, 22, 0.2);
@@ -429,11 +425,7 @@ body {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.instr-placeholder-hint {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.4);
-}
+
 
 .instr-video[src]:not([src=""])~.instr-placeholder {
   display: none;
@@ -597,23 +589,7 @@ body {
   box-shadow: 0 0 14px rgba(34, 197, 94, 0.55);
 }
 
-.camera-cancel-btn {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #fff;
-  font-family: var(--font);
-  font-size: 1rem;
-  font-weight: 800;
-  padding: 10px 28px;
-  border-radius: 50px;
-  cursor: pointer;
-  backdrop-filter: blur(10px);
-  transition: background 0.2s;
-}
 
-.camera-cancel-btn:hover {
-  background: rgba(255, 255, 255, 0.22);
-}
 
 /* ============================================================
    SCREEN GPS OFF: Panduan Aktifkan GPS
@@ -845,9 +821,7 @@ body {
   font-size: 1.2rem;
 }
 
-.result-card.success {
-  border-color: rgba(34, 197, 94, .3);
-}
+
 
 .result-card.error {
   border-color: rgba(239, 68, 68, .3);

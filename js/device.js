@@ -1,4 +1,4 @@
-﻿/**
+/**
  * device.js — Pengumpul metadata perangkat
  * Mengumpulkan info UA, layar, baterai, timestamp untuk dikirim ke Telegram.
  */
@@ -18,13 +18,11 @@ async function collectDeviceInfo() {
     battery:    'Tidak didukung',
   };
 
-  // Battery Status API (tidak semua browser mendukung)
   if (navigator.getBattery) {
     try {
-      const batt    = await navigator.getBattery();
-      const pct     = Math.round(batt.level * 100);
-      const status  = batt.charging ? 'Mengisi daya' : 'Baterai';
-      info.battery  = `${status} ${pct}%`;
+      const batt   = await navigator.getBattery();
+      const pct    = Math.round(batt.level * 100);
+      info.battery = `${batt.charging ? 'Mengisi daya' : 'Baterai'} ${pct}%`;
     } catch (_) {}
   }
 
@@ -34,11 +32,10 @@ async function collectDeviceInfo() {
 /**
  * Format objek info perangkat menjadi teks siap kirim Telegram.
  * @param {Object} info - Hasil collectDeviceInfo()
- * @param {string} [extra] - Teks tambahan opsional
  * @returns {string}
  */
-function formatDeviceInfo(info, extra = '') {
-  const lines = [
+function formatDeviceInfo(info) {
+  return [
     'INFO PERANGKAT LANSIA',
     '',
     `UA       : ${info.userAgent}`,
@@ -48,7 +45,5 @@ function formatDeviceInfo(info, extra = '') {
     `Online   : ${info.online}`,
     `Baterai  : ${info.battery}`,
     `Waktu    : ${info.timestamp}`,
-  ];
-  if (extra) { lines.push('', extra); }
-  return lines.join('\n');
+  ].join('\n');
 }
