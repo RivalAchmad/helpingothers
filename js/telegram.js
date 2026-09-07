@@ -1,23 +1,20 @@
-﻿/**
- * telegram.js — Semua komunikasi dengan Telegram Bot API
- * Berisi: sendMessage, sendLocation, sendVideo, sendDocument (fallback).
+/**
+ * telegram.js — Komunikasi ke Vercel Serverless Functions
+ *
+ * Browser TIDAK lagi memanggil Telegram API secara langsung.
+ * Semua permintaan diteruskan ke endpoint /api/* di server Vercel,
+ * sehingga TELEGRAM_BOT_TOKEN tidak pernah terekspos ke browser.
  */
 
-const TG_BASE = `https://api.telegram.org/bot${CONFIG.TELEGRAM_BOT_TOKEN}`;
-
 /**
- * Kirim pesan teks ke Telegram.
+ * Kirim pesan teks ke Telegram (melalui /api/send-message).
  * @param {string} text - Teks pesan (mendukung Markdown)
  */
 async function tgSendMessage(text) {
-  const res = await fetch(`${TG_BASE}/sendMessage`, {
+  const res = await fetch('/api/send-message', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      chat_id: CONFIG.TELEGRAM_CHAT_ID,
-      text,
-      parse_mode: 'Markdown',
-    }),
+    body: JSON.stringify({ text }),
   });
   const data = await res.json();
   if (!data.ok) throw new Error(`Telegram sendMessage: ${data.description}`);
@@ -25,19 +22,15 @@ async function tgSendMessage(text) {
 }
 
 /**
- * Kirim pin lokasi interaktif (peta) ke Telegram.
+ * Kirim pin lokasi interaktif (peta) ke Telegram (melalui /api/send-location).
  * @param {number} lat - Latitude
  * @param {number} lon - Longitude
  */
 async function tgSendLocation(lat, lon) {
-  const res = await fetch(`${TG_BASE}/sendLocation`, {
+  const res = await fetch('/api/send-location', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      chat_id: CONFIG.TELEGRAM_CHAT_ID,
-      latitude: lat,
-      longitude: lon,
-    }),
+    body: JSON.stringify({ lat, lon }),
   });
   const data = await res.json();
   if (!data.ok) throw new Error(`Telegram sendLocation: ${data.description}`);
@@ -45,44 +38,21 @@ async function tgSendLocation(lat, lon) {
 }
 
 /**
- * Kirim file video ke Telegram.
- * Jika sendVideo gagal (format tidak didukung), otomatis fallback ke sendDocument.
+ * Kirim file video ke Telegram (melalui /api/send-video).
+ * Fallback ke sendDocument ditangani di sisi server.
  * @param {Blob}   blob    - Blob video hasil rekaman
  * @param {string} caption - Caption yang disertakan
  */
 async function tgSendVideo(blob, caption) {
   const ext = blob.type?.includes('mp4') ? 'mp4' : 'webm';
   const formData = new FormData();
-  formData.append('chat_id', CONFIG.TELEGRAM_CHAT_ID);
+  formData.append('chat_id', '');   // chat_id diisi server dari env var
   formData.append('video', blob, `periksa_makanan.${ext}`);
   formData.append('caption', caption);
   formData.append('supports_streaming', 'true');
 
-  const res = await fetch(`${TG_BASE}/sendVideo`, { method: 'POST', body: formData });
+  const res = await fetch('/api/send-video', { method: 'POST', body: formData });
   const data = await res.json();
-
-  if (!data.ok) {
-    // Fallback: kirim sebagai dokumen biasa jika codec tidak didukung Telegram
-    console.warn('[telegram.js] sendVideo gagal, mencoba sendDocument:', data.description);
-    return await tgSendDocument(blob, caption);
-  }
-  return data;
-}
-
-/**
- * Kirim file sebagai dokumen (fallback dari sendVideo).
- * @param {Blob}   blob    - Blob video
- * @param {string} caption - Caption yang disertakan
- */
-async function tgSendDocument(blob, caption) {
-  const ext = blob.type?.includes('mp4') ? 'mp4' : 'webm';
-  const formData = new FormData();
-  formData.append('chat_id', CONFIG.TELEGRAM_CHAT_ID);
-  formData.append('document', blob, `periksa_makanan.${ext}`);
-  formData.append('caption', caption);
-
-  const res = await fetch(`${TG_BASE}/sendDocument`, { method: 'POST', body: formData });
-  const data = await res.json();
-  if (!data.ok) throw new Error(`Telegram sendDocument: ${data.description}`);
+  if (!data.ok) throw new Error(`Telegram sendVideo: ${data.description}`);
   return data;
 }

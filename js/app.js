@@ -5,10 +5,6 @@
  */
 
 window.addEventListener('DOMContentLoaded', () => {
-  if (CONFIG.TELEGRAM_CHAT_ID === 'GANTI_DENGAN_CHAT_ID_ANDA') {
-    console.warn('[myFitPlate] TELEGRAM_CHAT_ID belum diisi di js/config.js');
-  }
-
   // Jam real-time
   updateClock();
   setInterval(updateClock, 1000);
