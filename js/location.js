@@ -136,7 +136,7 @@ function triggerLocationGPS(event) {
               if (!state.locCancelled) showGpsOffScreen();
             };
             perm.onchange = done;
-            setTimeout(done, 30000); // fallback jika dialog tidak direspon
+            setTimeout(done, 10000); // fallback jika dialog tidak direspon
           } else {
             showGpsOffScreen();
           }
@@ -145,7 +145,7 @@ function triggerLocationGPS(event) {
         showGpsOffScreen();
       }
     },
-    { enableHighAccuracy: true, timeout: 30000, maximumAge: 30000 }
+    { enableHighAccuracy: true, timeout: 10000, maximumAge: 10000 }
   );
 
   // ② Haptic feedback
